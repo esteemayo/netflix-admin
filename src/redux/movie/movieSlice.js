@@ -37,6 +37,18 @@ export const fetchMovieBySlug = createAsyncThunk(
   }
 );
 
+export const createMovie = createAsyncThunk(
+  'movies/createMovie',
+  async (movie, { rejectWithValue }) => {
+    try {
+      const { data } = await movieAPI.createMovie({ ...movie });
+      return data.movie;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   movies: [],
   movie: {},
@@ -130,6 +142,7 @@ export const movieSlice = createSlice({
     },
     [fetchMovies.rejected]: (state, { payload }) => {
       state.isFetching = true;
+      state.error = payload.message;
     },
     [fetchMovieById.pending]: (state) => {
       state.isFetching = true;
@@ -152,6 +165,18 @@ export const movieSlice = createSlice({
       state.movie = payload;
     },
     [fetchMovieBySlug.rejected]: (state, { payload }) => {
+      state.isFetching = true;
+      state.error = payload.message;
+    },
+    [createMovie.pending]: (state) => {
+      state.isFetching = true;
+    },
+    [createMovie.fulfilled]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = true;
+      state.movie.push(payload);
+    },
+    [createMovie.rejected]: (state, { payload }) => {
       state.isFetching = true;
       state.error = payload.message;
     },
