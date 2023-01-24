@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   getStorage,
   ref,
@@ -10,11 +10,12 @@ import {
 } from 'firebase/storage';
 
 import app from '../firebase';
-import { createNewMovie } from 'redux/apiCalls/movieApiCalls';
+import { createMovie } from 'redux/movie/movieSlice';
 
 const NewMovie = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isSuccess, isFetching } = useSelector((state) => state.movies);
 
   const [img, setImg] = useState(null);
   const [imgSm, setImgSm] = useState(null);
@@ -86,8 +87,8 @@ const NewMovie = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    createNewMovie(dispatch, { ...movie });
-    navigate('/movies');
+    dispatch(createMovie({ ...movie }))
+    isSuccess && navigate('/movies');
   };
 
   return (
@@ -201,7 +202,12 @@ const NewMovie = () => {
           />
         </FormGroup>
         {uploaded === 5 ? (
-          <Button onClick={handleSubmit}>Create</Button>
+          <Button
+            disabled={isFetching}
+            onClick={handleSubmit}
+          >
+            Create
+          </Button>
         ) : (
           <Button onClick={handleUpload}>Upload</Button>
         )}
