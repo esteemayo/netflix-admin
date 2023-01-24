@@ -4,7 +4,6 @@ import AuthRoute from 'utils/AuthRoute';
 import ProtectedRoute from 'utils/ProtectedRoute';
 import { listColumns, movieColumns, userColumns } from 'data';
 import {
-  Error,
   Home,
   List,
   Lists,
@@ -14,6 +13,7 @@ import {
   NewList,
   NewMovie,
   NewUser,
+  NotFound,
   SharedLayout,
   SharedLayoutPage,
   User,
@@ -120,7 +120,7 @@ function App() {
             />
           </Route>
         </Route>
-        <Route path='*' element={<Error />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </Router>
   );
