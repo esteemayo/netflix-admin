@@ -5,18 +5,18 @@ import { DataGrid } from '@material-ui/data-grid';
 import { DeleteOutline } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchMovies, removeMovie } from 'redux/apiCalls/movieApiCalls';
+import { fetchMovies, removeMovie } from 'redux/movie/movieSlice';
 
 const MovieList = () => {
   const dispatch = useDispatch();
   const { movies } = useSelector((state) => state.movies);
 
   const handleDelete = (id) => {
-    removeMovie(dispatch, id);
+    dispatch(removeMovie(id));
   };
 
   useEffect(() => {
-    fetchMovies(dispatch);
+    dispatch(fetchMovies());
   }, [dispatch]);
 
   const columns = [
@@ -34,10 +34,26 @@ const MovieList = () => {
         );
       },
     },
-    { field: 'genre', headerName: 'Genre', width: 120 },
-    { field: 'year', headerName: 'Year', width: 120 },
-    { field: 'limit', headerName: 'Limit', width: 120 },
-    { field: 'isSeries', headerName: 'isSeries', width: 120 },
+    {
+      field: 'genre',
+      headerName: 'Genre',
+      width: 120
+    },
+    {
+      field: 'year',
+      headerName: 'Year',
+      width: 120
+    },
+    {
+      field: 'limit',
+      headerName: 'Limit',
+      width: 120
+    },
+    {
+      field: 'isSeries',
+      headerName: 'isSeries',
+      width: 120
+    },
     {
       field: 'action',
       headerName: 'Action',
