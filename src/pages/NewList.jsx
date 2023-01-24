@@ -1,20 +1,22 @@
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchMovies } from 'redux/apiCalls/movieApiCalls';
-import { createNewList } from 'redux/apiCalls/listApiCalls';
+import { createList } from 'redux/list/listSlice';
+import { fetchMovies } from 'redux/movie/movieSlice';
 
 const NewList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [list, setList] = useState(null);
   const { movies } = useSelector((state) => state.movies);
+  const { error, isSuccess, isFetching } = useSelector((state) => state.lists);
 
   const handleChange = ({ target: input }) => {
     const { name, value } = input;
-    setList({ ...list, [name]: value });
+    setList((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSelect = (e) => {
@@ -23,19 +25,23 @@ const NewList = () => {
       (option) => option.value
     );
 
-    setList({ ...list, [e.target.name]: value });
+    setList((prev) => ({ ...prev, [e.target.name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    createNewList(dispatch, { ...list });
-    navigate('/lists');
+    dispatch(createList({ ...list }));
+    isSuccess && navigate('/lists');
   };
 
   useEffect(() => {
-    fetchMovies(dispatch);
+    dispatch(fetchMovies());
   }, [dispatch]);
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
 
   return (
     <Container>
@@ -90,7 +96,7 @@ const NewList = () => {
             </Select>
           </FormGroup>
         </Right>
-        <Button>Create</Button>
+        <Button disabled={isFetching}>Create</Button>
       </Form>
     </Container>
   );
