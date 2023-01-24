@@ -56,6 +56,18 @@ export const updateUser = createAsyncThunk(
   }
 );
 
+export const removeUser = createAsyncThunk(
+  'user/deleteUser',
+  async ({ userId }, { rejectWithValue }) => {
+    try {
+      await userAPI.deleteUser(userId);
+      return userId;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const token = authAPI.getJWT();
 const user = getFromStorage(tokenKey);
 
@@ -194,6 +206,22 @@ export const userSlice = createSlice({
       state.users[
         state.users.findIndex((item) => item._id === payload._id)
       ] = payload;
+    },
+    [updateUser.rejected]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = false;
+      state.error = payload.message;
+    },
+    [updateUser.pending]: (state) => {
+      state.isFetching = true;
+    },
+    [updateUser.fulfilled]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = true;
+      state.users.splice(
+        state.users.findIndex((item) => item._id === payload),
+        1,
+      );
     },
     [updateUser.rejected]: (state, { payload }) => {
       state.isFetching = false;
