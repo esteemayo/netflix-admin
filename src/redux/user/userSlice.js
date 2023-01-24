@@ -65,9 +65,10 @@ export const fetchUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   'user/updateUser',
-  async ({ userId, credentials }, { rejectWithValue }) => {
+  async ({ userId, credentials, toast }, { rejectWithValue }) => {
     try {
       const { data } = await userAPI.editUser(userId, credentials);
+      toast.success('User account updated');
       return data.users;
     } catch (err) {
       return rejectWithValue(err.response.data);
