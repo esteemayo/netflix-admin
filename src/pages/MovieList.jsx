@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchMovies, removeMovie } from 'redux/movie/movieSlice';
 
-const MovieList = () => {
+const MovieList = ({ columns }) => {
   const dispatch = useDispatch();
   const { movies } = useSelector((state) => state.movies);
 
@@ -19,41 +19,7 @@ const MovieList = () => {
     dispatch(fetchMovies());
   }, [dispatch]);
 
-  const columns = [
-    { field: '_id', headerName: 'ID', width: 250 },
-    {
-      field: 'movie',
-      headerName: 'Movie',
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <MovieListUser>
-            <Image src={params.row.img} />
-            {params.row.title}
-          </MovieListUser>
-        );
-      },
-    },
-    {
-      field: 'genre',
-      headerName: 'Genre',
-      width: 120
-    },
-    {
-      field: 'year',
-      headerName: 'Year',
-      width: 120
-    },
-    {
-      field: 'limit',
-      headerName: 'Limit',
-      width: 120
-    },
-    {
-      field: 'isSeries',
-      headerName: 'isSeries',
-      width: 120
-    },
+  const actionColumn = [
     {
       field: 'action',
       headerName: 'Action',
@@ -86,7 +52,7 @@ const MovieList = () => {
     <Container>
       <DataGrid
         rows={movies}
-        columns={columns}
+        columns={columns.concat(actionColumn)}
         getRowId={(row) => row._id}
         disableSelectionOnClick
         pageSize={8}
@@ -101,20 +67,6 @@ const MovieList = () => {
 const Container = styled.div`
   flex: 4;
   padding: 2rem;
-`;
-
-const MovieListUser = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const Image = styled.img`
-  width: 3.2rem;
-  height: 3.2rem;
-  border-radius: 50%;
-  display: block;
-  object-fit: cover;
-  margin-right: 1rem;
 `;
 
 const EditButton = styled.button`
