@@ -3,7 +3,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import * as authAPI from 'services/authService';
 import * as userAPI from 'services/userService';
-import { tokenKey, getFromStorage, setToStorage } from 'utils';
+import {
+  tokenKey,
+  getFromStorage,
+  setToStorage,
+  clearStorage,
+} from 'utils';
 
 export const loginUser = createAsyncThunk(
   'auth/login',
@@ -152,6 +157,7 @@ export const userSlice = createSlice({
       state.isFetching = false;
     },
     logout: (state) => {
+      clearStorage();
       state.user = null;
     },
   },
