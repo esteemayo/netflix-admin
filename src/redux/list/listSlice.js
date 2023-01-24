@@ -37,6 +37,18 @@ export const updateList = createAsyncThunk(
   }
 );
 
+export const removeList = createAsyncThunk(
+  'movies/deleteList',
+  async (listId, { rejectWithValue }) => {
+    try {
+      await listAPI.deleteList(listId);
+      return listId;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   lists: [],
   isFetching: false,
@@ -134,6 +146,22 @@ export const listSlice = createSlice({
     },
     [updateList.rejected]: (state, { payload }) => {
       state.isFetching = false;
+      state.error = payload.message;
+    },
+    [removeList.pending]: (state) => {
+      state.isFetching = true;
+    },
+    [removeList.fulfilled]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = true;
+      state.lists.splice(
+        state.lists.findIndex((item) => item._id === payload),
+        1,
+      );
+    },
+    [removeList.rejected]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = false;
       state.error = payload.message;
     },
   },
