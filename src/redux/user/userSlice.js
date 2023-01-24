@@ -2,7 +2,22 @@ import jwtDecode from 'jwt-decode';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import * as authAPI from 'services/authService';
-import { tokenKey, getFromStorage } from 'utils';
+import { tokenKey, getFromStorage, setToStorage } from 'utils';
+
+export const loginUser = createAsyncThunk(
+  'auth/login',
+  async ({ credentials }, { rejectWithValue }) => {
+    try {
+      const { data } = await authAPI.login({ ...credentials });
+      if (data.role === 'admin') {
+        return data.details;
+      }
+      return rejectWithValue({ message: 'Access denied' });
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 
 const token = authAPI.getJWT();
 const user = getFromStorage(tokenKey);
@@ -91,6 +106,22 @@ export const userSlice = createSlice({
       state.user = null;
     },
   },
+  extraReducers: {
+    [loginUser.pending]: (state) => {
+      state.isFetching = true;
+    },
+    [loginUser.fulfilled]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = true;
+      setToStorage(tokenKey, payload);
+      state.user = payload;
+    },
+    [loginUser.rejected]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = false;
+      state.error = payload.message;
+    },
+  }
 });
 
 export const {
