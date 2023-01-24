@@ -57,7 +57,6 @@ const User = () => {
 
   return (
     <Container>
-      user
       <TitleContainer>
         <Title>Edit user</Title>
         <Link to='/users/new' className='user__link'>
