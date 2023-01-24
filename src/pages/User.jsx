@@ -40,11 +40,8 @@ const User = () => {
     };
 
     dispatch(updateUser({ userId: id, credentials, toast }));
-  };
-
-  useEffect(() => {
     isSuccess && navigate('/users');
-  }, [isSuccess, navigate]);
+  };
 
   useEffect(() => {
     dispatch(fetchUser(id));
@@ -52,7 +49,6 @@ const User = () => {
 
   useEffect(() => {
     setInputs({
-      name: user?.name,
       role: user?.role,
       email: user?.email,
       username: user?.username,
@@ -61,6 +57,7 @@ const User = () => {
 
   return (
     <Container>
+      user
       <TitleContainer>
         <Title>Edit user</Title>
         <Link to='/users/new' className='user__link'>
@@ -71,8 +68,8 @@ const User = () => {
         <ShowUser>
           <Top>
             <Image
-              src={user.avatar || '/assets/img/netflix-default-avatar.jpg'}
-              alt={user.username}
+              src={user.avatar ?? '/assets/img/netflix-default-avatar.jpg'}
+              alt=''
             />
             <TopTitle>
               <ShowUserUsername>{user.username}</ShowUserUsername>
@@ -140,7 +137,7 @@ const User = () => {
             <Right>
               <Upload>
                 <UpdateUserImage
-                  src={'/assets/img/netflix-default-avatar.jpg'}
+                  src={user?.avatar ?? '/assets/img/netflix-default-avatar.jpg'}
                   alt=''
                 />
                 <FormLabel htmlFor='file'>
