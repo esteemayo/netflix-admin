@@ -25,6 +25,18 @@ export const createList = createAsyncThunk(
   }
 );
 
+export const updateList = createAsyncThunk(
+  'movies/updateList',
+  async (listId, list, { rejectWithValue }) => {
+    try {
+      const { data } = await listAPI.editList(listId, list);
+      return data.list;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   lists: [],
   isFetching: false,
@@ -107,6 +119,20 @@ export const listSlice = createSlice({
       state.lists.push(payload);
     },
     [createList.rejected]: (state, { payload }) => {
+      state.isFetching = false;
+      state.error = payload.message;
+    },
+    [updateList.pending]: (state) => {
+      state.isFetching = true;
+    },
+    [updateList.fulfilled]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = true;
+      state.lists[
+        state.lists.findIndex((item) => item._id === payload._id)
+      ] = payload;
+    },
+    [updateList.rejected]: (state, { payload }) => {
       state.isFetching = false;
       state.error = payload.message;
     },
