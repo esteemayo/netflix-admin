@@ -12,7 +12,7 @@ import {
 
 import app from '../firebase';
 import { phone } from 'responsive';
-import { reset } from 'redux/user/userSlice';
+import { registerUser, reset } from 'redux/user/userSlice';
 
 const NewUser = () => {
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ const NewUser = () => {
             avatar: downloadURL,
           };
 
-          dispatch({ credentials: userData, toast });
+          dispatch(registerUser({ credentials: userData, toast }));
           user && isSuccess && navigate('/users');
         });
       }
