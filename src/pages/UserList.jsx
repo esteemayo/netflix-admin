@@ -21,33 +21,7 @@ const UserList = () => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-  const columns = [
-    { field: '_id', headerName: 'ID', width: 250 },
-    {
-      field: 'username',
-      headerName: 'Username',
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <UserListUser>
-            <Image
-              src={params.row.avatar || 'assets/img/netflix-default-avatar.jpg'}
-            />
-            {params.row.username}
-          </UserListUser>
-        );
-      },
-    },
-    {
-      field: 'email',
-      headerName: 'Email',
-      width: 200
-    },
-    {
-      field: 'role',
-      headerName: 'Role',
-      width: 150
-    },
+  const actionColumn = [
     {
       field: 'action',
       headerName: 'Action',
@@ -80,7 +54,7 @@ const UserList = () => {
     <Container>
       <DataGrid
         rows={users}
-        columns={columns}
+        columns={''}
         getRowId={(row) => row._id}
         disableSelectionOnClick
         pageSize={8}
@@ -96,19 +70,7 @@ const Container = styled.div`
   flex: 4;
 `;
 
-const UserListUser = styled.div`
-  display: flex;
-  align-items: center;
-`;
 
-const Image = styled.img`
-  width: 3.2rem;
-  height: 3.2rem;
-  border-radius: 50%;
-  display: block;
-  object-fit: cover;
-  margin-right: 1rem;
-`;
 
 const EditButton = styled.button`
   border: none;
