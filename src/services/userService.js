@@ -1,6 +1,6 @@
 import http from './httpService';
 
-const apiEndpoint = 'users';
+const apiEndpoint = '/users';
 
 const userUrl = (id) => `${apiEndpoint}/${id}`;
 
