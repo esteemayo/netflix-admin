@@ -174,7 +174,7 @@ export const movieSlice = createSlice({
     [createMovie.fulfilled]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = true;
-      state.movie.push(payload);
+      state.movies.push(payload);
     },
     [createMovie.rejected]: (state, { payload }) => {
       state.isFetching = true;
