@@ -1,13 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import * as movieAPI from 'services/movieService';
+
+export const fetchMovies = createAsyncThunk(
+  'movies/getMovies',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await movieAPI.getMovies();
+      return data.movies;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+const initialState = {
+  movies: [],
+  movie: {},
+  isFetching: false,
+  isSuccess: false,
+  error: null,
+};
 
 export const movieSlice = createSlice({
   name: 'movies',
-  initialState: {
-    movies: [],
-    movie: {},
-    isFetching: false,
-    error: false,
-  },
+  initialState,
   reducers: {
     getMoviesStart: (state) => {
       state.isFetching = true;
@@ -79,6 +95,19 @@ export const movieSlice = createSlice({
       state.isFetching = false;
     },
   },
+  extraReducers: {
+    [fetchMovies.pending]: (state) => {
+      state.isFetching = true;
+    },
+    [fetchMovies.fulfilled]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = true;
+      state.movies = payload;
+    },
+    [fetchMovies.pending]: (state) => {
+      state.isFetching = true;
+    },
+  }
 });
 
 export const {
