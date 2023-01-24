@@ -80,8 +80,9 @@ const token = authAPI.getJWT();
 const user = getFromStorage(tokenKey);
 
 const initialState = {
-  user: user ?? null,
   users: [],
+  user: {},
+  currentUser: user ?? null,
   isFetching: false,
   isSuccess: false,
   error: null,
@@ -119,12 +120,12 @@ export const userSlice = createSlice({
       state.isFetching = false;
       state.isSuccess = true;
       setToStorage(tokenKey, payload);
-      state.user = payload;
+      state.currentUser = payload;
     },
     [loginUser.rejected]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = false;
-      state.user = null;
+      state.currentUser = null;
       state.error = payload.message;
     },
     [registerUser.pending]: (state) => {
@@ -134,12 +135,12 @@ export const userSlice = createSlice({
       state.isFetching = false;
       state.isSuccess = true;
       setToStorage(tokenKey, payload);
-      state.user = payload;
+      state.currentUser = payload;
     },
     [registerUser.rejected]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = false;
-      state.user = null;
+      state.currentUser = null;
       state.error = payload.message;
     },
     [fetchUsers.pending]: (state) => {
