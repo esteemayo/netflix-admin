@@ -1,6 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as listAPI from 'services/listService';
 
+export const fetchLists = createAsyncThunk(
+  'movies/getLists',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await listAPI.getLists();
+      return data.lists;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   lists: [],
   isFetching: false,
@@ -59,6 +71,20 @@ export const listSlice = createSlice({
     deleteListFailure: (state) => {
       state.error = true;
       state.isFetching = false;
+    },
+  },
+  extraReducers: {
+    [fetchLists.pending]: (state) => {
+      state.isFetching = true;
+    },
+    [fetchLists.fulfilled]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = true;
+      state.lists = payload;
+    },
+    [fetchLists.rejected]: (state, { payload }) => {
+      state.isFetching = false;
+      state.error = payload.message;
     },
   },
 });
