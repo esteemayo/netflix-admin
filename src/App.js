@@ -18,6 +18,7 @@ import {
   User,
   UserList,
 } from 'pages/index';
+import { userColumns } from 'data';
 
 function App() {
   return (
@@ -45,7 +46,7 @@ function App() {
               index
               element={
                 <AuthRoute>
-                  <UserList />
+                  <UserList columns={userColumns} />
                 </AuthRoute>
               }
             />
