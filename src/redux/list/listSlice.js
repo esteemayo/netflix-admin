@@ -120,6 +120,7 @@ export const listSlice = createSlice({
     },
     [fetchLists.rejected]: (state, { payload }) => {
       state.isFetching = false;
+      state.isSuccess = false;
       state.error = payload.message;
     },
     [createList.pending]: (state) => {
@@ -132,6 +133,7 @@ export const listSlice = createSlice({
     },
     [createList.rejected]: (state, { payload }) => {
       state.isFetching = false;
+      state.isSuccess = false;
       state.error = payload.message;
     },
     [updateList.pending]: (state) => {
@@ -146,6 +148,7 @@ export const listSlice = createSlice({
     },
     [updateList.rejected]: (state, { payload }) => {
       state.isFetching = false;
+      state.isSuccess = false;
       state.error = payload.message;
     },
     [removeList.pending]: (state) => {
