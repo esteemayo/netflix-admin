@@ -225,7 +225,7 @@ export const movieSlice = createSlice({
       state.isFetching = false;
       state.isSuccess = true;
       state.movies.splice(
-        state.movies.findIndex((item) => item._id === payload._id),
+        state.movies.findIndex((item) => item._id === payload),
         1,
       );
     },
