@@ -44,6 +44,18 @@ export const fetchUsers = createAsyncThunk(
   }
 );
 
+export const updateUser = createAsyncThunk(
+  'user/updateUser',
+  async ({ userId, credentials }, { rejectWithValue }) => {
+    try {
+      const { data } = await userAPI.editUser(userId, credentials);
+      return data.users;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const token = authAPI.getJWT();
 const user = getFromStorage(tokenKey);
 
@@ -169,6 +181,21 @@ export const userSlice = createSlice({
       state.users = payload;
     },
     [fetchUsers.rejected]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = false;
+      state.error = payload.message;
+    },
+    [updateUser.pending]: (state) => {
+      state.isFetching = true;
+    },
+    [updateUser.fulfilled]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = true;
+      state.users[
+        state.users.findIndex((item) => item._id === payload._id)
+      ] = payload;
+    },
+    [updateUser.rejected]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = false;
       state.error = payload.message;
