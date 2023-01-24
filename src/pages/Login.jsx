@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { loginUser } from 'redux/apiCalls/userApiCalls';
+import { loginUser, reset } from 'redux/user/userSlice';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const Login = () => {
   const usernameRef = useRef();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { error } = useSelector((state) => state.user);
+  const { user, error, isSuccess, isFetching } = useSelector((state) => state.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,11 +24,15 @@ const Login = () => {
       password,
     };
 
-    loginUser(dispatch, { ...userData });
+    dispatch(loginUser({ credentials: userData, toast }));
 
     const origin = location.state?.from?.pathname || '/';
-    navigate(origin);
+    user && isSuccess && navigate(origin);
   };
+
+  useEffect(() => {
+    dispatch(reset());
+  }, [dispatch]);
 
   useEffect(() => {
     usernameRef.current.focus();
@@ -57,8 +62,8 @@ const Login = () => {
             />
             <FormLabel>Password</FormLabel>
           </FormGroup>
-          {error && <ErrorMessage>Oops! Something went wrong...</ErrorMessage>}
-          <Button>Login</Button>
+          {error && <ErrorMessage>{error}</ErrorMessage>}
+          <Button disabled={isFetching}>Login</Button>
         </Form>
       </Wrapper>
     </Container>
