@@ -61,6 +61,18 @@ export const updateMovie = createAsyncThunk(
   }
 );
 
+export const removeMovie = createAsyncThunk(
+  'movies/deleteMovie',
+  async (movieId, { rejectWithValue }) => {
+    try {
+      const { data } = await movieAPI.deleteMovie(movieId);
+      return data.movie;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const initialState = {
   movies: [],
   movie: {},
@@ -203,6 +215,21 @@ export const movieSlice = createSlice({
       ] = payload;
     },
     [updateMovie.rejected]: (state, { payload }) => {
+      state.isFetching = true;
+      state.error = payload.message;
+    },
+    [removeMovie.pending]: (state) => {
+      state.isFetching = true;
+    },
+    [removeMovie.fulfilled]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = true;
+      state.movies.splice(
+        state.movies.findIndex((item) => item._id === payload._id),
+        1,
+      );
+    },
+    [removeMovie.rejected]: (state, { payload }) => {
       state.isFetching = true;
       state.error = payload.message;
     },
