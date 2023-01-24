@@ -32,6 +32,18 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+export const fetchUsers = createAsyncThunk(
+  'user/getUsers',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await userAPI.getAllUsers();
+      return data.users;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const token = authAPI.getJWT();
 const user = getFromStorage(tokenKey);
 
@@ -144,6 +156,19 @@ export const userSlice = createSlice({
       state.user = payload;
     },
     [registerUser.rejected]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = false;
+      state.error = payload.message;
+    },
+    [fetchUsers.pending]: (state) => {
+      state.isFetching = true;
+    },
+    [fetchUsers.fulfilled]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = true;
+      state.users = payload;
+    },
+    [fetchUsers.rejected]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = false;
       state.error = payload.message;
