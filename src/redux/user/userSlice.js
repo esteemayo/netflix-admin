@@ -1,15 +1,18 @@
 import jwtDecode from 'jwt-decode';
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const initialStateValue = {
-  user: null,
+import * as authAPI from 'services/authService';
+import { tokenKey, getFromStorage } from 'utils';
+
+const token = authAPI.getJWT();
+const user = getFromStorage(tokenKey)
+
+const initialState = {
+  user: user ?? null,
   users: [],
   isFetching: false,
   error: false,
 };
-
-const tokenKey = 'accessToken';
-const token = localStorage.getItem(tokenKey);
 
 if (token) {
   const decodedToken = jwtDecode(token);
@@ -17,14 +20,12 @@ if (token) {
 
   if (expiryDate > decodedToken.exp * 1000) {
     localStorage.removeItem(tokenKey);
-  } else {
-    initialStateValue.user = decodedToken;
   }
 }
 
 export const userSlice = createSlice({
   name: 'users',
-  initialState: initialStateValue,
+  initialState,
   reducers: {
     getUsersStart: (state) => {
       state.isFetching = true;
