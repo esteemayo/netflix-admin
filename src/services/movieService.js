@@ -2,30 +2,18 @@ import http from './httpService';
 
 const apiEndpoint = 'movies';
 
-const movieUrl = (id) => {
-  return `${apiEndpoint}/${id}`;
-};
+const movieUrl = (id) => `${apiEndpoint}/${id}`;
 
-export function getMovies() {
-  return http.get(apiEndpoint);
-}
+export const getMovies = () => http.get(apiEndpoint);
 
-export function getMovieById(id) {
-  return http.get(`${apiEndpoint}/find/${id}`);
-}
+export const getMovieById = (id) =>
+  http.get(`${apiEndpoint}/find/${id}`);
 
-export function getMovieBySlug(slug) {
-  return http.get(`${apiEndpoint}/details/${slug}`);
-}
+export const getMovieBySlug = (slug) =>
+  http.get(`${apiEndpoint}/details/${slug}`);
 
-export function createMovie(movie) {
-  return http.post(apiEndpoint, movie);
-}
+export const createMovie = (movie) => http.post(apiEndpoint, movie);
 
-export function editMovie(id, movie) {
-  return http.patch(movieUrl(id), movie);
-}
+export const editMovie = (id, movie) => http.patch(movieUrl(id), movie);
 
-export function deleteMovie(id) {
-  return http.delete(movieUrl(id));
-}
+export const deleteMovie = (id) => http.delete(movieUrl(id));
