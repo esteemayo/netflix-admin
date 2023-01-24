@@ -65,9 +65,10 @@ export const updateUser = createAsyncThunk(
 
 export const removeUser = createAsyncThunk(
   'user/deleteUser',
-  async ({ userId }, { rejectWithValue }) => {
+  async ({ userId, toast }, { rejectWithValue }) => {
     try {
       await userAPI.deleteUser(userId);
+      toast.success('User deleted');
       return userId;
     } catch (err) {
       return rejectWithValue(err.response.data);
