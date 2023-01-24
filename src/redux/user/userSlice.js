@@ -2,6 +2,7 @@ import jwtDecode from 'jwt-decode';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import * as authAPI from 'services/authService';
+import * as userAPI from 'services/userService';
 import { tokenKey, getFromStorage, setToStorage } from 'utils';
 
 export const loginUser = createAsyncThunk(
@@ -13,6 +14,18 @@ export const loginUser = createAsyncThunk(
         return data.details;
       }
       return rejectWithValue({ message: 'Access denied' });
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const registerUser = createAsyncThunk(
+  'user/register',
+  async ({ credentials }, { rejectWithValue }) => {
+    try {
+      const { data } = await userAPI.register({ ...credentials });
+      return data.details;
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
@@ -117,6 +130,20 @@ export const userSlice = createSlice({
       state.user = payload;
     },
     [loginUser.rejected]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = false;
+      state.error = payload.message;
+    },
+    [registerUser.pending]: (state) => {
+      state.isFetching = true;
+    },
+    [registerUser.fulfilled]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = true;
+      setToStorage(tokenKey, payload);
+      state.user = payload;
+    },
+    [registerUser.rejected]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = false;
       state.error = payload.message;
