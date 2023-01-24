@@ -308,6 +308,29 @@ export const movieColumns = [
   },
 ];
 
+export const listColumns = [
+  {
+    field: '_id',
+    headerName: 'ID',
+    width: 250
+  },
+  {
+    field: 'title',
+    headerName: 'Title',
+    width: 250
+  },
+  {
+    field: 'genre',
+    headerName: 'Genre',
+    width: 150
+  },
+  {
+    field: 'type',
+    headerName: 'Type',
+    width: 150
+  },
+];
+
 const UserListUser = styled.div`
   display: flex;
   align-items: center;
