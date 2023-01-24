@@ -1,22 +1,24 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { DataGrid } from '@material-ui/data-grid';
 import { DeleteOutline } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchUsers, removeUser } from 'redux/apiCalls/userApiCalls';
+import { fetchUsers, removeUser } from 'redux/user/userSlice';
 
 const UserList = () => {
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.user);
 
   const handleDelete = (id) => {
-    removeUser(dispatch, id);
+    const userId = id;
+    dispatch(removeUser({ userId, toast }));
   };
 
   useEffect(() => {
-    fetchUsers(dispatch);
+    dispatch(fetchUsers());
   }, [dispatch]);
 
   const columns = [
@@ -36,8 +38,16 @@ const UserList = () => {
         );
       },
     },
-    { field: 'email', headerName: 'Email', width: 200 },
-    { field: 'role', headerName: 'Role', width: 150 },
+    {
+      field: 'email',
+      headerName: 'Email',
+      width: 200
+    },
+    {
+      field: 'role',
+      headerName: 'Role',
+      width: 150
+    },
     {
       field: 'action',
       headerName: 'Action',
