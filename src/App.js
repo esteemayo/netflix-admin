@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import AuthRoute from 'utils/AuthRoute';
 import ProtectedRoute from 'utils/ProtectedRoute';
+import { userColumns } from 'data';
 import {
   Error,
   Home,
@@ -18,7 +19,6 @@ import {
   User,
   UserList,
 } from 'pages/index';
-import { userColumns } from 'data';
 
 function App() {
   return (
