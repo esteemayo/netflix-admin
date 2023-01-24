@@ -11,7 +11,8 @@ const initialState = {
   user: user ?? null,
   users: [],
   isFetching: false,
-  error: false,
+  isSuccess: false,
+  error: null,
 };
 
 if (token) {
