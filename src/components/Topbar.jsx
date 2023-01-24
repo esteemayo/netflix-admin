@@ -13,7 +13,7 @@ import { logout } from 'redux/user/userSlice';
 const Topbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.user);
+  const { currentUser } = useSelector((state) => state.user);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -38,7 +38,7 @@ const Topbar = () => {
           <IconContainer>
             <Settings style={{ fontSize: '2rem' }} />
           </IconContainer>
-          <Image src={user?.avatar || 'assets/img/user-default.jpg'} />
+          <Image src={currentUser?.avatar || 'assets/img/user-default.jpg'} />
           <Profile>
             <ArrowDropDown className='icon' />
             <Options>
