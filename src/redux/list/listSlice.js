@@ -1,12 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import * as listAPI from 'services/listService';
+
+const initialState = {
+  lists: [],
+  isFetching: false,
+  isSuccess: false,
+  error: null,
+};
 
 export const listSlice = createSlice({
   name: 'lists',
-  initialState: {
-    lists: [],
-    isFetching: false,
-    error: false,
-  },
+  initialState,
   reducers: {
     getListsStart: (state) => {
       state.isFetching = true;
