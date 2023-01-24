@@ -128,32 +128,30 @@ export const movieSlice = createSlice({
       state.isSuccess = true;
       state.movies = payload;
     },
-    [fetchMovieById.pending]: (state) => {
+    [fetchMovies.rejected]: (state, { payload }) => {
       state.isFetching = true;
     },
-    [fetchMovieById.pending]: (state, { payload }) => {
+    [fetchMovieById.pending]: (state) => {
       state.isFetching = true;
-      state.error = payload.message;
     },
     [fetchMovieById.fulfilled]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = true;
       state.movie = payload;
     },
-    [fetchMovies.pending]: (state, { payload }) => {
+    [fetchMovieById.rejected]: (state, { payload }) => {
       state.isFetching = true;
       state.error = payload.message;
     },
-    [fetchMovieBySlug.pending]: (state, { payload }) => {
+    [fetchMovieBySlug.pending]: (state) => {
       state.isFetching = true;
-      state.error = payload.message;
     },
     [fetchMovieBySlug.fulfilled]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = true;
       state.movie = payload;
     },
-    [fetchMovieBySlug.pending]: (state, { payload }) => {
+    [fetchMovieBySlug.rejected]: (state, { payload }) => {
       state.isFetching = true;
       state.error = payload.message;
     },
