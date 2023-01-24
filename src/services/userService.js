@@ -2,30 +2,18 @@ import http from './httpService';
 
 const apiEndpoint = 'users';
 
-const userUrl = (id) => {
-  return `${apiEndpoint}/${id}`;
-};
+const userUrl = (id) => `${apiEndpoint}/${id}`;
 
-export function getAllUsers() {
-  return http.get(apiEndpoint);
-}
+export const getAllUsers = () => http.get(apiEndpoint);
 
-export function getUsers() {
-  return http.get(`${apiEndpoint}?new=true`);
-}
+export const getUsers = () => http.get(`${apiEndpoint}?new=true`);
 
-export function getUsersStats() {
-  return http.get(`${apiEndpoint}/stats`);
-}
+export const getUsersStats = () => http.get(`${apiEndpoint}/stats`);
 
-export function register(credentials) {
-  return http.post(`${apiEndpoint}/register`, credentials);
-}
+export const register = (credentials) =>
+  http.post(`${apiEndpoint}/register`, credentials);
 
-export function editUser(id, credentials) {
-  return http.patch(userUrl(id), credentials);
-}
+export const editUser = (id, credentials) =>
+  http.patch(userUrl(id), credentials);
 
-export function deleteUser(id) {
-  return http.delete(userUrl(id));
-}
+export const deleteUser = (id) => http.delete(userUrl(id));
