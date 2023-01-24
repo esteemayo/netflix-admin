@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import AuthRoute from 'utils/AuthRoute';
 import ProtectedRoute from 'utils/ProtectedRoute';
-import { movieColumns, userColumns } from 'data';
+import { listColumns, movieColumns, userColumns } from 'data';
 import {
   Error,
   Home,
@@ -98,7 +98,7 @@ function App() {
               index
               element={
                 <AuthRoute>
-                  <Lists />
+                  <Lists columns={listColumns} />
                 </AuthRoute>
               }
             />
