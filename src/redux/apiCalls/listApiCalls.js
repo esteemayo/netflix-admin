@@ -1,4 +1,4 @@
-import * as actions from '../list';
+import * as actions from '../list/listSlice';
 import * as listService from 'services/listService';
 
 export const fetchLists = async (dispatch) => {
