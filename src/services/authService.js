@@ -1,9 +1,10 @@
 import http from './httpService';
+import { getFromStorage, tokenKey } from 'utils';
 
 const apiEndpoint = '/auth';
-const tokenKey = 'accessToken';
 
 export const login = (credentials) =>
   http.post(`${apiEndpoint}/login`, credentials);
 
-export const getJWT = () => localStorage.getItem(tokenKey);
+export const getJWT = () =>
+  getFromStorage(tokenKey)?.accessToken;

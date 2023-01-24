@@ -5,7 +5,7 @@ import * as authAPI from 'services/authService';
 import { tokenKey, getFromStorage } from 'utils';
 
 const token = authAPI.getJWT();
-const user = getFromStorage(tokenKey)
+const user = getFromStorage(tokenKey);
 
 const initialState = {
   user: user ?? null,
