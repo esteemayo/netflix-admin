@@ -128,14 +128,14 @@ export const movieSlice = createSlice({
       state.isSuccess = true;
       state.movies = payload;
     },
-    [fetchMovies.pending]: (state) => {
+    [fetchMovieById.pending]: (state) => {
       state.isFetching = true;
     },
-    [fetchMovies.pending]: (state, { payload }) => {
+    [fetchMovieById.pending]: (state, { payload }) => {
       state.isFetching = true;
       state.error = payload.message;
     },
-    [fetchMovies.fulfilled]: (state, { payload }) => {
+    [fetchMovieById.fulfilled]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = true;
       state.movie = payload;
