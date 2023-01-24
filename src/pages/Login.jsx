@@ -14,7 +14,7 @@ const Login = () => {
   const usernameRef = useRef();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { user, error, isSuccess, isFetching } = useSelector((state) => state.user);
+  const { currentUser, error, isSuccess, isFetching } = useSelector((state) => state.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ const Login = () => {
     dispatch(loginUser({ credentials: userData, toast }));
 
     const origin = location.state?.from?.pathname || '/';
-    user && isSuccess && navigate(origin);
+    currentUser && isSuccess && navigate(origin);
   };
 
   useEffect(() => {
