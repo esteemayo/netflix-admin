@@ -51,6 +51,18 @@ export const fetchUsers = createAsyncThunk(
   }
 );
 
+export const fetchUser = createAsyncThunk(
+  'user/getUser',
+  async (userId, { rejectWithValue }) => {
+    try {
+      const { data } = await userAPI.getUser(userId);
+      return data.user;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 export const updateUser = createAsyncThunk(
   'user/updateUser',
   async ({ userId, credentials }, { rejectWithValue }) => {
@@ -152,6 +164,19 @@ export const userSlice = createSlice({
       state.users = payload;
     },
     [fetchUsers.rejected]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = false;
+      state.error = payload.message;
+    },
+    [fetchUser.pending]: (state) => {
+      state.isFetching = true;
+    },
+    [fetchUser.fulfilled]: (state, { payload }) => {
+      state.isFetching = false;
+      state.isSuccess = true;
+      state.user = payload;
+    },
+    [fetchUser.rejected]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = false;
       state.error = payload.message;
