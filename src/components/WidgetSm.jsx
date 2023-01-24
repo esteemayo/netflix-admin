@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Visibility } from '@material-ui/icons';
 
 import { phone } from 'responsive';
 import { getUsers } from 'services/userService';
 
 const WidgetSm = () => {
+  const navigate = useNavigate();
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const WidgetSm = () => {
               <UserContainer>
                 <UserName>{username}</UserName>
               </UserContainer>
-              <Button>
+              <Button onClick={() => navigate(`/user/${id}`)}>
                 <Visibility
                   style={{ fontSize: '1.6rem', marginRight: '0.5rem' }}
                 />
