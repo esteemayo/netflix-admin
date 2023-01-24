@@ -36,7 +36,7 @@ const WidgetSm = () => {
               <UserContainer>
                 <UserName>{username}</UserName>
               </UserContainer>
-              <Button onClick={() => navigate(`/user/${id}`)}>
+              <Button onClick={() => navigate(`/users/${id}`)}>
                 <Visibility
                   style={{ fontSize: '1.6rem', marginRight: '0.5rem' }}
                 />
