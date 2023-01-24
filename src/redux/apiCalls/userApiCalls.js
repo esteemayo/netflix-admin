@@ -1,4 +1,4 @@
-import * as actions from '../user';
+import * as actions from 'user/userSlice';
 import { login } from 'services/authService';
 import * as userService from 'services/userService';
 
