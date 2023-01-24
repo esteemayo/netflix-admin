@@ -1,4 +1,4 @@
-import * as actions from '../movie';
+import * as actions from '../movie/moviemovie';
 import * as movieService from 'services/movieService';
 
 export const fetchMovies = async (dispatch) => {
