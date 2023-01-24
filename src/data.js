@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 export const userData = [
   {
     name: 'Jan',
@@ -157,6 +159,35 @@ export const userRows = [
   },
 ];
 
+export const userColumns = [
+  { field: '_id', headerName: 'ID', width: 250 },
+  {
+    field: 'username',
+    headerName: 'Username',
+    width: 200,
+    renderCell: (params) => {
+      return (
+        <UserListUser>
+          <Image
+            src={params.row.avatar || 'assets/img/netflix-default-avatar.jpg'}
+          />
+          {params.row.username}
+        </UserListUser>
+      );
+    },
+  },
+  {
+    field: 'email',
+    headerName: 'Email',
+    width: 200
+  },
+  {
+    field: 'role',
+    headerName: 'Role',
+    width: 150
+  },
+];
+
 export const productRows = [
   {
     id: 1,
@@ -240,4 +271,16 @@ export const productRows = [
   },
 ];
 
+const UserListUser = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
+const Image = styled.img`
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+  margin-right: 1rem;
+`;
