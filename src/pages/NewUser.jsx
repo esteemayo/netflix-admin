@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
   getStorage,
@@ -11,18 +12,20 @@ import {
 
 import app from '../firebase';
 import { phone } from 'responsive';
-import { registerUser } from 'redux/apiCalls/userApiCalls';
+import { reset } from 'redux/user/userSlice';
 
 const NewUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { user, error, isSuccess, isFetching } =
+    useSelector((state) => state.user);
 
   const [file, setFile] = useState(null);
-  const [user, setUser] = useState(null);
+  const [inputs, setInputs] = useState(null);
 
   const handleChange = ({ target: input }) => {
     const { name, value } = input;
-    setUser({ ...user, [name]: value });
+    setInputs((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
@@ -57,16 +60,21 @@ const NewUser = () => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           const userData = {
-            ...user,
+            ...inputs,
             avatar: downloadURL,
           };
 
-          registerUser(dispatch, { ...userData });
-          navigate('/users');
+          dispatch({ credentials: userData, toast });
+          user && isSuccess && navigate('/users');
         });
       }
     );
   };
+
+  useEffect(() => {
+    error && toast.error(error);
+    dispatch(reset());
+  }, [dispatch, error]);
 
   return (
     <Container>
@@ -122,7 +130,7 @@ const NewUser = () => {
             <FormLabel htmlFor='file'>Avatar</FormLabel>
           </FormGroup>
         </FormContainer>
-        <Button>Create</Button>
+        <Button disabled={isFetching}>Create</Button>
       </Form>
     </Container>
   );
