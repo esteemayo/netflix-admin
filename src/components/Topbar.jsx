@@ -7,7 +7,7 @@ import {
   Settings,
 } from '@material-ui/icons';
 
-import { logout } from 'redux/user';
+import { logout } from 'redux/user/userSlice';
 
 const Topbar = () => {
   const { user } = useSelector((state) => state.user);
