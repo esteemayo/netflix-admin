@@ -160,6 +160,12 @@ export const userSlice = createSlice({
       clearStorage();
       state.user = null;
     },
+    reset: (state) => {
+      state.users = [];
+      state.isFetching = false;
+      state.isSuccess = false;
+      state.error = null;
+    },
   },
   extraReducers: {
     [loginUser.pending]: (state) => {
@@ -256,6 +262,7 @@ export const {
   updateUserStart,
   updateUserSuccess,
   logout,
+  reset
 } = userSlice.actions;
 
 export default userSlice.reducer;
