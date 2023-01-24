@@ -1,27 +1,15 @@
 import http from './httpService';
 
-const apiEndpoint = 'lists';
+const apiEndpoint = '/lists';
 
-const listUrl = (id) => {
-  return `${apiEndpoint}/${id}`;
-};
+const listUrl = (id) => `${apiEndpoint}/${id}`;
 
-export function getLists() {
-  return http.get(`${apiEndpoint}`);
-}
+export const getLists = () => http.get(`${apiEndpoint}`);
 
-export function getList(id) {
-  return http.get(listUrl(id));
-}
+export const getList = (id) => http.get(listUrl(id));
 
-export function createList(list) {
-  return http.post(apiEndpoint, list);
-}
+export const createList = (list) => http.post(apiEndpoint, list);
 
-export function editList(id, list) {
-  return http.patch(listUrl(id), list);
-}
+export const editList = (id, list) => http.patch(listUrl(id), list);
 
-export function deleteList(id) {
-  return http.delete(listUrl(id));
-}
+export const deleteList = (id) => http.delete(listUrl(id));
