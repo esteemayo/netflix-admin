@@ -1,20 +1,63 @@
+import styled from 'styled-components';
+import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   CalendarToday,
   MailOutline,
   PermIdentity,
   Publish,
 } from '@material-ui/icons';
-import styled from 'styled-components';
-import { Link, useLocation } from 'react-router-dom';
 
 import { phone } from 'responsive';
+import { fetchUser, updateUser } from 'redux/user/userSlice';
+
+const initialState = {
+  role: '',
+  email: '',
+  username: '',
+};
 
 const User = () => {
-  const { state: user } = useLocation();
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user, isSuccess, isFetching } = useSelector((state) => state.user);
+
+  const [inputs, setInputs] = useState(initialState);
+
+  const handleChange = ({ target: input }) => {
+    const { name, value } = input;
+    setInputs((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const credentials = {
+      ...inputs,
+    };
+
+    dispatch(updateUser({ userId: id, credentials, toast }));
   };
+
+  useEffect(() => {
+    isSuccess && navigate('/users');
+  }, [isSuccess, navigate]);
+
+  useEffect(() => {
+    dispatch(fetchUser(id));
+  }, [dispatch, id]);
+
+  useEffect(() => {
+    setInputs({
+      name: user?.name,
+      role: user?.role,
+      email: user?.email,
+      username: user?.username,
+    });
+  }, [user]);
 
   return (
     <Container>
@@ -63,26 +106,53 @@ const User = () => {
           <Form onSubmit={handleSubmit}>
             <Left>
               <FormGroup>
-                <FormInput type='text' placeholder={user.username} required />
+                <FormInput
+                  type='text'
+                  value={inputs.username}
+                  placeholder={user.username}
+                  onChange={handleChange}
+                  required
+                />
                 <FormLabel>Username</FormLabel>
               </FormGroup>
               <FormGroup>
-                <FormInput type='email' placeholder={user.email} required />
+                <FormInput
+                  type='email'
+                  value={inputs.email}
+                  placeholder={user.email}
+                  onChange={handleChange}
+                  required
+                />
                 <FormLabel>Email</FormLabel>
+              </FormGroup>
+              <FormGroup>
+                <FormInput
+                  type='text'
+                  name='role'
+                  value={inputs.role}
+                  placeholder={user.role}
+                  onChange={handleChange}
+                  required
+                />
+                <FormLabel>Role</FormLabel>
               </FormGroup>
             </Left>
             <Right>
               <Upload>
                 <UpdateUserImage
-                  src={user.avatar || '/assets/img/netflix-default-avatar.jpg'}
-                  alt={user.username}
+                  src={'/assets/img/netflix-default-avatar.jpg'}
+                  alt=''
                 />
                 <FormLabel htmlFor='file'>
                   <Publish style={{ fontSize: '2rem', cursor: 'pointer' }} />
                 </FormLabel>
-                <FormInput type='file' id='file' style={{ display: 'none' }} />
+                <FormInput
+                  type='file'
+                  id='file'
+                  style={{ display: 'none' }}
+                />
               </Upload>
-              <FormButton>Update</FormButton>
+              <FormButton disabled={isFetching}>Update</FormButton>
             </Right>
           </Form>
         </UpdateUser>
