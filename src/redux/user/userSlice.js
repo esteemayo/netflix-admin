@@ -168,6 +168,7 @@ export const userSlice = createSlice({
     [loginUser.rejected]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = false;
+      state.user = null;
       state.error = payload.message;
     },
     [registerUser.pending]: (state) => {
@@ -182,6 +183,7 @@ export const userSlice = createSlice({
     [registerUser.rejected]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = false;
+      state.user = null;
       state.error = payload.message;
     },
     [fetchUsers.pending]: (state) => {
