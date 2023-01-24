@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchLists, removeList } from 'redux/list/listSlice';
 
-const Lists = () => {
+const Lists = ({ columns }) => {
   const dispatch = useDispatch();
   const { lists } = useSelector((state) => state.lists);
 
@@ -19,27 +19,7 @@ const Lists = () => {
     dispatch(fetchLists());
   }, [dispatch]);
 
-  const columns = [
-    {
-      field: '_id',
-      headerName: 'ID',
-      width: 250
-    },
-    {
-      field: 'title',
-      headerName: 'Title',
-      width: 250
-    },
-    {
-      field: 'genre',
-      headerName: 'Genre',
-      width: 150
-    },
-    {
-      field: 'type',
-      headerName: 'Type',
-      width: 150
-    },
+  const actionColumn = [
     {
       field: 'action',
       headerName: 'Action',
@@ -72,7 +52,7 @@ const Lists = () => {
     <Container>
       <DataGrid
         rows={lists}
-        columns={columns}
+        columns={columns.concat(actionColumn)}
         getRowId={(row) => row._id}
         disableSelectionOnClick
         pageSize={8}
