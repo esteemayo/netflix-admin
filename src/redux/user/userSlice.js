@@ -12,10 +12,11 @@ import {
 
 export const loginUser = createAsyncThunk(
   'auth/login',
-  async ({ credentials }, { rejectWithValue }) => {
+  async ({ credentials, toast }, { rejectWithValue }) => {
     try {
       const { data } = await authAPI.login({ ...credentials });
       if (data.role === 'admin') {
+        toast.success('Log in successful');
         return data.details;
       }
       return rejectWithValue({ message: 'Access denied' });
