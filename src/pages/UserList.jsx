@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchUsers, removeUser } from 'redux/user/userSlice';
 
-const UserList = () => {
+const UserList = ({ columns }) => {
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.user);
 
@@ -54,7 +54,7 @@ const UserList = () => {
     <Container>
       <DataGrid
         rows={users}
-        columns={''}
+        columns={columns.concat(actionColumn)}
         getRowId={(row) => row._id}
         disableSelectionOnClick
         pageSize={8}
