@@ -5,25 +5,41 @@ import { DataGrid } from '@material-ui/data-grid';
 import { DeleteOutline } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchLists, removeList } from 'redux/apiCalls/listApiCalls';
+import { fetchLists, removeList } from 'redux/list/listSlice';
 
 const Lists = () => {
   const dispatch = useDispatch();
   const { lists } = useSelector((state) => state.lists);
 
   const handleDelete = (id) => {
-    removeList(dispatch, id);
+    dispatch(removeList(id));
   };
 
   useEffect(() => {
-    fetchLists(dispatch);
+    dispatch(fetchLists());
   }, [dispatch]);
 
   const columns = [
-    { field: '_id', headerName: 'ID', width: 250 },
-    { field: 'title', headerName: 'Title', width: 250 },
-    { field: 'genre', headerName: 'Genre', width: 150 },
-    { field: 'type', headerName: 'Type', width: 150 },
+    {
+      field: '_id',
+      headerName: 'ID',
+      width: 250
+    },
+    {
+      field: 'title',
+      headerName: 'Title',
+      width: 250
+    },
+    {
+      field: 'genre',
+      headerName: 'Genre',
+      width: 150
+    },
+    {
+      field: 'type',
+      headerName: 'Type',
+      width: 150
+    },
     {
       field: 'action',
       headerName: 'Action',
