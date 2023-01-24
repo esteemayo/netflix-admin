@@ -27,7 +27,7 @@ const NewMovie = () => {
 
   const handleChange = ({ target: input }) => {
     const { name, value } = input;
-    setMovie({ ...movie, [name]: value });
+    setMovie((prev) => ({ ...prev, [name]: value }));
   };
 
   const upload = (items) => {
