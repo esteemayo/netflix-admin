@@ -271,6 +271,43 @@ export const productRows = [
   },
 ];
 
+export const movieColumns = [
+  { field: '_id', headerName: 'ID', width: 250 },
+  {
+    field: 'movie',
+    headerName: 'Movie',
+    width: 200,
+    renderCell: (params) => {
+      return (
+        <MovieListUser>
+          <Image src={params.row.img} />
+          {params.row.title}
+        </MovieListUser>
+      );
+    },
+  },
+  {
+    field: 'genre',
+    headerName: 'Genre',
+    width: 120
+  },
+  {
+    field: 'year',
+    headerName: 'Year',
+    width: 120
+  },
+  {
+    field: 'limit',
+    headerName: 'Limit',
+    width: 120
+  },
+  {
+    field: 'isSeries',
+    headerName: 'isSeries',
+    width: 120
+  },
+];
+
 const UserListUser = styled.div`
   display: flex;
   align-items: center;
@@ -283,4 +320,9 @@ const Image = styled.img`
   display: block;
   object-fit: cover;
   margin-right: 1rem;
+`;
+
+const MovieListUser = styled.div`
+  display: flex;
+  align-items: center;
 `;
