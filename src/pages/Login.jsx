@@ -46,6 +46,7 @@ const Login = () => {
           <FormGroup>
             <FormInput
               type='text'
+              name='username'
               placeholder='Username'
               required
               ref={usernameRef}
@@ -56,6 +57,7 @@ const Login = () => {
           <FormGroup>
             <FormInput
               type='password'
+              name='password'
               placeholder='Password'
               required
               onChange={(e) => setPassword(e.target.value)}
