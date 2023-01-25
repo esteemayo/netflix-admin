@@ -71,7 +71,12 @@ const Login = () => {
 };
 
 const Container = styled.div`
+  height: 100vh;
   padding: 2rem;
+  background-color: ${({ theme }) => theme.bg};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Wrapper = styled.div`
@@ -83,6 +88,7 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   font-size: 3.2rem;
   font-weight: 600;
+  color: ${({ theme }) => theme.text};
   margin-bottom: 2rem;
 `;
 
@@ -144,11 +150,12 @@ const Button = styled.button`
   display: block;
   padding: 1rem 2rem;
   width: 40rem;
-  background-color: #00008b;
-  color: var(--color-white);
+  background-color: ${({ theme }) => theme.bgBtnAdd};
+  color: ${({ theme }) => theme.textAdd};
   border-radius: 5px;
   font-size: 1.4rem;
   margin-top: 2rem;
+  outline-color: ${({ theme }) => theme.text};
   cursor: pointer;
   transition: all 0.5s ease;
 
@@ -156,10 +163,6 @@ const Button = styled.button`
     opacity: 0.7;
     letter-spacing: 3px;
     transform: translateY(-3px);
-  }
-
-  &:focus {
-    outline: none;
   }
 
   &:disabled {
