@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import AuthRoute from 'utils/AuthRoute';
 import ProtectedRoute from 'utils/ProtectedRoute';
+import { darkTheme, lightTheme } from 'utils/Theme';
 import { listColumns, movieColumns, userColumns } from 'data';
 import {
   Home,
@@ -23,108 +24,112 @@ import {
 } from 'pages/index';
 
 function App() {
+  const { darkMode } = useSelector((state) => state.darkMode);
+
   return (
-    <Router>
-      <Routes>
-        <Route
-          path='/login'
-          element={
-            <ProtectedRoute>
-              <Login />
-            </ProtectedRoute>
-          }
-        />
-        <Route path='/' element={<SharedLayout />}>
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+      <Router>
+        <Routes>
           <Route
-            index
+            path='/login'
             element={
-              <AuthRoute>
-                <Home />
-              </AuthRoute>
+              <ProtectedRoute>
+                <Login />
+              </ProtectedRoute>
             }
           />
-          <Route path='users' element={<SharedLayoutPage />}>
+          <Route path='/' element={<SharedLayout />}>
             <Route
               index
               element={
                 <AuthRoute>
-                  <UserList columns={userColumns} />
+                  <Home />
                 </AuthRoute>
               }
             />
-            <Route
-              path=':id'
-              element={
-                <AuthRoute>
-                  <User />
-                </AuthRoute>
-              }
-            />
-            <Route
-              path='new'
-              element={
-                <AuthRoute>
-                  <NewUser />
-                </AuthRoute>
-              }
-            />
+            <Route path='users' element={<SharedLayoutPage />}>
+              <Route
+                index
+                element={
+                  <AuthRoute>
+                    <UserList columns={userColumns} />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path=':id'
+                element={
+                  <AuthRoute>
+                    <User />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path='new'
+                element={
+                  <AuthRoute>
+                    <NewUser />
+                  </AuthRoute>
+                }
+              />
+            </Route>
+            <Route path='movies' element={<SharedLayoutPage />}>
+              <Route
+                index
+                element={
+                  <AuthRoute>
+                    <MovieList columns={movieColumns} />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path=':id'
+                element={
+                  <AuthRoute>
+                    <Movie />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path='new'
+                element={
+                  <AuthRoute>
+                    <NewMovie />
+                  </AuthRoute>
+                }
+              />
+            </Route>
+            <Route path='lists' element={<SharedLayoutPage />}>
+              <Route
+                index
+                element={
+                  <AuthRoute>
+                    <Lists columns={listColumns} />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path=':id'
+                element={
+                  <AuthRoute>
+                    <List />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path='new'
+                element={
+                  <AuthRoute>
+                    <NewList />
+                  </AuthRoute>
+                }
+              />
+            </Route>
           </Route>
-          <Route path='movies' element={<SharedLayoutPage />}>
-            <Route
-              index
-              element={
-                <AuthRoute>
-                  <MovieList columns={movieColumns} />
-                </AuthRoute>
-              }
-            />
-            <Route
-              path=':id'
-              element={
-                <AuthRoute>
-                  <Movie />
-                </AuthRoute>
-              }
-            />
-            <Route
-              path='new'
-              element={
-                <AuthRoute>
-                  <NewMovie />
-                </AuthRoute>
-              }
-            />
-          </Route>
-          <Route path='lists' element={<SharedLayoutPage />}>
-            <Route
-              index
-              element={
-                <AuthRoute>
-                  <Lists columns={listColumns} />
-                </AuthRoute>
-              }
-            />
-            <Route
-              path=':id'
-              element={
-                <AuthRoute>
-                  <List />
-                </AuthRoute>
-              }
-            />
-            <Route
-              path='new'
-              element={
-                <AuthRoute>
-                  <NewList />
-                </AuthRoute>
-              }
-            />
-          </Route>
-        </Route>
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </Router>
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
