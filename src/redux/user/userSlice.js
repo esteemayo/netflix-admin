@@ -119,7 +119,6 @@ export const userSlice = createSlice({
       state.user = null;
     },
     reset: (state) => {
-      state.users = [];
       state.isFetching = false;
       state.isSuccess = false;
       state.error = null;
