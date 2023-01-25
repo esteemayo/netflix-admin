@@ -11,7 +11,7 @@ import {
 } from '@material-ui/icons';
 
 import { phone } from 'responsive';
-import { fetchUser, updateUser } from 'redux/user/userSlice';
+import { fetchUser, reset, updateUser } from 'redux/user/userSlice';
 
 const initialState = {
   role: '',
@@ -45,6 +45,7 @@ const User = () => {
 
   useEffect(() => {
     dispatch(fetchUser(id));
+    dispatch(reset());
   }, [dispatch, id]);
 
   useEffect(() => {
