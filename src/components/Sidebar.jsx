@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import {
   BarChart,
@@ -15,7 +16,11 @@ import {
   WorkOutline,
 } from '@material-ui/icons';
 
+import { dark, light } from 'redux/darkMode/darkModeSlice';
+
 const Sidebar = () => {
+  const dispatch = useDispatch();
+
   return (
     <Container>
       <Wrapper>
@@ -23,12 +28,7 @@ const Sidebar = () => {
           <Title>Dashboard</Title>
           <SidebarList>
             <SidebarListItem active>
-              <NavLink
-                to='/'
-                className={({ isActive }) =>
-                  isActive ? 'sidebar__link active' : 'sidebar__link'
-                }
-              >
+              <NavLink to='/'>
                 <LineStyle
                   style={{ fontSize: '2rem', marginRight: '0.5rem' }}
                 />
@@ -49,12 +49,7 @@ const Sidebar = () => {
           <Title>Quick menu</Title>
           <SidebarList>
             <SidebarListItem>
-              <NavLink
-                to='/users'
-                className={({ isActive }) =>
-                  isActive ? 'sidebar__link active' : 'sidebar__link'
-                }
-              >
+              <NavLink to='/users'>
                 <PermIdentity
                   style={{ fontSize: '2rem', marginRight: '0.5rem' }}
                 />
@@ -62,11 +57,7 @@ const Sidebar = () => {
               </NavLink>
             </SidebarListItem>
             <SidebarListItem>
-              <NavLink
-                to='/movies'
-                className={({ isActive }) =>
-                  isActive ? 'sidebar__link active' : 'sidebar__link'
-                }
+              <NavLink to='/movies'
               >
                 <PlayCircleOutlineRounded
                   style={{ fontSize: '2rem', marginRight: '0.5rem' }}
@@ -75,11 +66,7 @@ const Sidebar = () => {
               </NavLink>
             </SidebarListItem>
             <SidebarListItem>
-              <NavLink
-                to='/lists'
-                className={({ isActive }) =>
-                  isActive ? 'sidebar__link active' : 'sidebar__link'
-                }
+              <NavLink to='/lists'
               >
                 <List style={{ fontSize: '2rem', marginRight: '0.5rem' }} />
                 Lists
@@ -132,6 +119,10 @@ const Sidebar = () => {
               Reports
             </SidebarListItem>
           </SidebarList>
+          <Bottom>
+            <Light onClick={() => dispatch(light())} />
+            <Dark onClick={() => dispatch(dark())} />
+          </Bottom>
         </SidebarMenu>
       </Wrapper>
     </Container>
@@ -141,7 +132,7 @@ const Sidebar = () => {
 const Container = styled.div`
   flex: 1;
   height: calc(100vh - 5rem);
-  background-color: rgb(251, 251, 255);
+  background-color: ${({ theme }) => theme.bgLight};
   position: sticky;
   top: 5rem;
 `;
@@ -174,13 +165,45 @@ const SidebarListItem = styled.li`
   display: flex;
   align-items: center;
   border-radius: 1rem;
-  // background-color: ${(props) => props.active && 'rgb(240, 240, 255)'};
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 
-  &:hover {
-    background-color: rgb(240, 240, 255);
+  a,
+  a:link,
+  a:visited {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
   }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.soft};
+  }
+`;
+
+const Bottom = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  & > * {
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+    border-radius: 0.5rem;
+    border: 1px solid ${({ theme }) => theme.toggleBtn};
+    outline-color: ${({ theme }) => theme.text};
+    cursor: pointer;
+  }
+`;
+
+const Light = styled.button`
+  background-color: whitesmoke;
+`;
+
+const Dark = styled.button`
+  background-color: #333;
 `;
 
 export default Sidebar;
