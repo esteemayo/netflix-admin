@@ -160,7 +160,11 @@ export const userRows = [
 ];
 
 export const userColumns = [
-  { field: '_id', headerName: 'ID', width: 250 },
+  {
+    field: '_id',
+    headerName: 'ID',
+    width: 250,
+  },
   {
     field: 'username',
     headerName: 'Username',
@@ -169,7 +173,8 @@ export const userColumns = [
       return (
         <UserListUser>
           <Image
-            src={params.row.avatar || 'assets/img/netflix-default-avatar.jpg'}
+            src={params.row.avatar ?? 'assets/img/netflix-default-avatar.jpg'}
+            alt=''
           />
           {params.row.username}
         </UserListUser>
@@ -179,12 +184,12 @@ export const userColumns = [
   {
     field: 'email',
     headerName: 'Email',
-    width: 200
+    width: 220
   },
   {
     field: 'role',
     headerName: 'Role',
-    width: 150
+    width: 120
   },
 ];
 
