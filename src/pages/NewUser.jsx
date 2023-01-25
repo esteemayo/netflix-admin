@@ -17,7 +17,7 @@ import { registerUser, reset } from 'redux/user/userSlice';
 const NewUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { error, isSuccess, isFetching } = useSelector((state) => state.user);
+  const { error, isFetching } = useSelector((state) => state.user);
 
   const [file, setFile] = useState(null);
   const [inputs, setInputs] = useState(null);
@@ -64,7 +64,7 @@ const NewUser = () => {
           };
 
           dispatch(registerUser({ credentials: userData, toast }));
-          isSuccess && navigate('/users');
+          navigate('/users');
         });
       }
     );
