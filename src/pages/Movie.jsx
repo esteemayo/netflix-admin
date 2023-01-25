@@ -22,7 +22,7 @@ const Movie = () => {
       <Top>
         <TopRight>
           <InfoTop>
-            <Image src={movie.img} alt={movie.title} />
+            <Image src={movie.img} alt='' />
             <MovieTitle>{movie.title}</MovieTitle>
           </InfoTop>
           <InfoBottom>
@@ -75,11 +75,15 @@ const Movie = () => {
           </FormLeft>
           <FormRight>
             <FileUpload>
-              <Img src={movie.img} alt={movie.title} />
+              <Img src={movie.img} alt='' />
               <Label htmlFor='file'>
                 <Publish style={{ fontSize: '2rem', cursor: 'pointer' }} />
               </Label>
-              <Input id='file' type='file' style={{ display: 'none' }} />
+              <Input
+                id='file'
+                type='file'
+                style={{ display: 'none' }}
+              />
             </FileUpload>
             <Button>Update</Button>
           </FormRight>
@@ -92,6 +96,7 @@ const Movie = () => {
 const Container = styled.div`
   flex: 4;
   padding: 2rem;
+  background-color: ${({ theme }) => theme.bg};
 `;
 
 const TitleContainer = styled.div`
@@ -103,6 +108,7 @@ const TitleContainer = styled.div`
 
 const Title = styled.h1`
   text-transform: capitalize;
+  color: ${({ theme }) => theme.textSoft};
 `;
 
 const AddButton = styled.button`
@@ -111,8 +117,8 @@ const AddButton = styled.button`
   font-size: 1.6rem;
   padding: 1rem 2rem;
   text-transform: capitalize;
-  background-color: #008080;
-  color: var(--color-white);
+  background-color: ${({ theme }) => theme.bgBtnAdd};
+  color: ${({ theme }) => theme.textAdd};
   border-radius: 0.5rem;
   cursor: pointer;
   -webkit-transition: all 0.5s ease;
@@ -138,9 +144,9 @@ const TopRight = styled.div`
   padding: 2rem;
   margin: 2rem;
   font-size: 1.5rem;
-  -webkit-box-shadow: 0 0 1.5rem -1rem rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0 0 1.5rem -1rem rgba(0, 0, 0, 0.75);
-  box-shadow: 0 0 1.5rem -1rem rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: ${({ theme }) => theme.box};
+  -moz-box-shadow: ${({ theme }) => theme.box};
+  box-shadow: ${({ theme }) => theme.box};
 `;
 
 const InfoTop = styled.div`
@@ -183,9 +189,9 @@ const InfoValue = styled.span`
 const Bottom = styled.div`
   padding: 2rem;
   margin: 2rem;
-  -webkit-box-shadow: 0 0 1.5rem -1rem rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0 0 1.5rem -1rem rgba(0, 0, 0, 0.75);
-  box-shadow: 0 0 1.5rem -1rem rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: ${({ theme }) => theme.box};
+  -moz-box-shadow: ${({ theme }) => theme.box};
+  box-shadow: ${({ theme }) => theme.box};
 `;
 
 const Form = styled.form`
@@ -216,10 +222,12 @@ const Label = styled.label`
 const Input = styled.input`
   border: none;
   display: block;
+  width: 50rem;
   padding: 1rem 2rem;
+  background-color: ${({ theme }) => theme.bgInput};
   color: #999;
-  border-bottom: 3px solid #bbb;
-  caret-color: #00008b;
+  border-bottom: 3px solid ${({ theme }) => theme.borderInput};
+  caret-color: ${({ theme }) => theme.crInput};
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 
@@ -266,9 +274,10 @@ const Button = styled.button`
   font-size: 1.4rem;
   font-weight: 600;
   padding: 0.5rem;
-  background-color: #00008b;
-  color: var(--color-white);
+  background-color: ${({ theme }) => theme.btnUpd};
+  color: ${({ theme }) => theme.textUpd};
   border-radius: 0.5rem;
+  outline-color: ${({ theme }) => theme.text};
   cursor: pointer;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
