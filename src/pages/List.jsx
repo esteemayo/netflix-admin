@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { phone } from 'responsive';
+import { updateList } from 'redux/list/listSlice';
 
 const initialState = {
   type: '',
@@ -11,9 +14,14 @@ const initialState = {
 };
 
 const List = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { state: list } = useLocation();
+  const { isFetching, error } = useSelector((state) => state.lists);
+
   const [data, setData] = useState(initialState);
 
+  const listId = list?._id;
   const { type, title, genre } = data;
 
   const handleChange = ({ target: input }) => {
@@ -23,6 +31,9 @@ const List = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    dispatch(updateList(listId, data));
+    navigate(-1);
   };
 
   useEffect(() => {
@@ -32,6 +43,10 @@ const List = () => {
       genre: list.genre,
     });
   }, [list]);
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
 
   return (
     <Container>
@@ -49,7 +64,7 @@ const List = () => {
           <InfoBottom>
             <InfoItem>
               <InfoKey>id:</InfoKey>
-              <InfoValue>{list._id}</InfoValue>
+              <InfoValue>{listId}</InfoValue>
             </InfoItem>
             <InfoItem>
               <InfoKey>genre:</InfoKey>
@@ -97,7 +112,7 @@ const List = () => {
             </FormGroup>
           </FormLeft>
           <FormRight>
-            <Button>Update</Button>
+            <Button disabled={isFetching}>Update</Button>
           </FormRight>
         </Form>
       </Bottom>
