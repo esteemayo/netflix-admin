@@ -123,8 +123,9 @@ const NewUser = () => {
           </FormGroup>
           <FormGroup>
             <FormInput
-              type='file'
               id='file'
+              type='file'
+              accept='image/*'
               onChange={(e) => setFile(e.target.files[0])}
             />
             <FormLabel htmlFor='file'>Avatar</FormLabel>
@@ -140,6 +141,7 @@ const Container = styled.div`
   flex: 4;
   padding: 2rem;
   font-size: 1.5rem;
+  background-color: ${({ theme }) => theme.bg};
 `;
 
 const Title = styled.h1`
@@ -179,21 +181,22 @@ const FormInput = styled.input`
   width: 100%;
   padding: 1.25rem 1.75rem;
   border-top: 3px solid transparent;
-  border-bottom: 3px solid #bbb;
+  border-bottom: 3px solid ${({ type, theme }) => type === 'file' ? '#bbb' : theme.borderInput};
   font-family: inherit;
   font-size: 1.4rem;
+  background-color: ${({ theme }) => theme.bgInput};
   color: #999;
   border-radius: 4px;
-  caret-color: #00008b;
+  caret-color: ${({ theme }) => theme.crInput};
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
 
   &:focus {
     outline: none;
     border-bottom: 3px solid #008080;
-    -webkit-box-shadow: 0 1rem 2rem rgba(00, 00, 00, 0.1);
-    -moz-box-shadow: 0 1rem 2rem rgba(00, 00, 00, 0.1);
-    box-shadow: 0 1rem 2rem rgba(00, 00, 00, 0.1);
+    -webkit-box-shadow: ${({ theme }) => theme.box};
+    -moz-box-shadow: ${({ theme }) => theme.box};
+    box-shadow: ${({ theme }) => theme.box};
   }
 
   &:focus:invalid {
@@ -220,10 +223,11 @@ const Button = styled.button`
   padding: 0.7rem 1rem;
   font-weight: 600;
   font-size: 1.5rem;
-  background-color: #00008b;
-  color: var(--color-white);
+  background-color: ${({ theme }) => theme.btnNew};
+  color: ${({ theme }) => theme.textNew};
   border-radius: 1rem;
   margin-top: 3rem;
+  outline-color: ${({ theme }) => theme.text};
   cursor: pointer;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -236,8 +240,9 @@ const Button = styled.button`
     }
   }
 
-  &:focus {
-    outline: none;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `;
 
