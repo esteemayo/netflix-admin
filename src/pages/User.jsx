@@ -105,7 +105,7 @@ const User = () => {
                 <FormInput
                   type='text'
                   name='username'
-                  value={inputs.username}
+                  value={inputs.username || ''}
                   placeholder={user.username}
                   onChange={handleChange}
                   required
@@ -116,7 +116,7 @@ const User = () => {
                 <FormInput
                   type='email'
                   name='email'
-                  value={inputs.email}
+                  value={inputs.email || ''}
                   placeholder={user.email}
                   onChange={handleChange}
                   required
@@ -127,7 +127,7 @@ const User = () => {
                 <FormInput
                   type='text'
                   name='role'
-                  value={inputs.role}
+                  value={inputs.role || ''}
                   placeholder={user.role}
                   onChange={handleChange}
                   required
