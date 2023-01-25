@@ -69,7 +69,7 @@ export const updateUser = createAsyncThunk(
     try {
       const { data } = await userAPI.editUser(userId, credentials);
       toast.success('User account updated');
-      return data.users;
+      return data.doc;
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
