@@ -10,6 +10,7 @@ import { fetchMovies, removeMovie } from 'redux/movie/movieSlice';
 const MovieList = ({ columns }) => {
   const dispatch = useDispatch();
   const { movies } = useSelector((state) => state.movies);
+  const { darkMode } = useSelector((state) => state.darkMode);
 
   const handleDelete = (id) => {
     dispatch(removeMovie(id));
@@ -36,11 +37,8 @@ const MovieList = ({ columns }) => {
             </Link>
             <DeleteOutline
               onClick={() => handleDelete(params.row._id)}
-              style={{
-                fontSize: '2rem',
-                color: '#ff0000',
-                cursor: 'pointer',
-              }}
+              style={{ fontSize: '2rem', cursor: 'pointer' }}
+              className={darkMode ? 'delete__dark' : 'delete__light'}
             />
           </>
         );
@@ -59,6 +57,7 @@ const MovieList = ({ columns }) => {
         rowsPerPageOptions={[8]}
         checkboxSelection
         style={{ fontSize: '1.5rem' }}
+        className={darkMode && 'data__grid'}
       />
     </Container>
   );
@@ -67,6 +66,7 @@ const MovieList = ({ columns }) => {
 const Container = styled.div`
   flex: 4;
   padding: 2rem;
+  background-color: ${({ theme }) => theme.bg};
 `;
 
 const EditButton = styled.button`
@@ -74,8 +74,8 @@ const EditButton = styled.button`
   display: block;
   padding: 0.5rem 1rem;
   text-transform: capitalize;
-  background-color: #3bb077;
-  color: var(--color-white);
+  background-color: ${({ theme }) => theme.btnEdit};
+  color: ${({ theme }) => theme.textEdit};
   border-radius: 10rem;
   cursor: pointer;
   margin-right: 1rem;
