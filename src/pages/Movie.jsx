@@ -36,15 +36,54 @@ const Movie = () => {
     setInputs((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleUpload = (e) => {
-    e.preventDefault();
+  const uploadFile = (file, label) => {
+    const fileName = `${new Date().getTime()}-${label}-${file.name}`;
 
-  }
+    const storage = getStorage(app);
+    const storageRef = ref(storage, `movies/${fileName}`);
+
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+        switch (snapshot.state) {
+          case 'paused':
+            console.log('Upload is paused');
+            break;
+          case 'running':
+            console.log('Upload is running');
+            break;
+          default:
+        }
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setInputs((prev) => ({ ...prev, [label]: downloadURL }));
+          setUploaded((prev) => prev + 1);
+        });
+      }
+    );
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({ ...inputs })
   };
+
+  useEffect(() => {
+    img && uploadFile(img, 'img');
+    imgSm && uploadFile(imgSm, 'imgSm');
+    imgTitle && uploadFile(imgTitle, 'imgTitle');
+    video && uploadFile(video, 'video');
+    trailer && uploadFile(trailer, 'trailer');
+  }, [img, imgSm, imgTitle, video, trailer]);
 
   useEffect(() => {
     setInputs({
