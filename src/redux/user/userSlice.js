@@ -197,10 +197,10 @@ export const userSlice = createSlice({
       state.isSuccess = false;
       state.error = payload.message;
     },
-    [updateUser.pending]: (state) => {
+    [removeUser.pending]: (state) => {
       state.isFetching = true;
     },
-    [updateUser.fulfilled]: (state, { payload }) => {
+    [removeUser.fulfilled]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = true;
       state.users.splice(
@@ -208,7 +208,7 @@ export const userSlice = createSlice({
         1,
       );
     },
-    [updateUser.rejected]: (state, { payload }) => {
+    [removeUser.rejected]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = false;
       state.error = payload.message;
