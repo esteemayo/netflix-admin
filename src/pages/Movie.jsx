@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { Line } from 'rc-progress';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 import { Publish } from '@material-ui/icons';
-import { Link, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   getStorage,
   ref,
@@ -11,6 +14,7 @@ import {
 
 import app from '../firebase';
 import { phone } from 'responsive';
+import { updateMovie } from 'redux/movie/movieSlice';
 
 const initialState = {
   title: '',
@@ -20,15 +24,24 @@ const initialState = {
 };
 
 const Movie = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { state: movie } = useLocation();
+  const { error, isFetching } = useSelector((state) => state.movies);
 
   const [img, setImg] = useState(null);
+  const [imgPerc, setImgPerc] = useState(50);
   const [imgSm, setImgSm] = useState(null);
+  const [imgSmPerc, setImgSmPerc] = useState(10);
   const [video, setVideo] = useState(null);
-  const [uploaded, setUploaded] = useState(0);
+  const [videoPerc, setVideoPerc] = useState(40);
   const [trailer, setTrailer] = useState(null);
+  const [trailerPerc, setTrailerPerc] = useState(90);
   const [imgTitle, setImgTitle] = useState(null);
+  const [imgTitlePerc, setImgTitlePerc] = useState(100);
   const [inputs, setInputs] = useState(initialState);
+
+  const movieId = movie?._id;
 
   const handleChange = ({ target: input }) => {
     const { id, type, value } = input;
@@ -50,6 +63,27 @@ const Movie = () => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log('Upload is ' + progress + '% done');
+        switch (label) {
+          case 'img':
+            setImgPerc(Math.round(progress));
+            break;
+          case 'imgSm':
+            setImgSmPerc(Math.round(progress));
+            break;
+          case 'imgTitle':
+            setImgTitlePerc(Math.round(progress));
+            break;
+          case 'video':
+            setVideoPerc(Math.round(progress));
+            break;
+          case 'trailer':
+            setTrailerPerc(Math.round(progress));
+            break;
+
+          default:
+            break;
+        }
+
         switch (snapshot.state) {
           case 'paused':
             console.log('Upload is paused');
@@ -66,7 +100,6 @@ const Movie = () => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setInputs((prev) => ({ ...prev, [label]: downloadURL }));
-          setUploaded((prev) => prev + 1);
         });
       }
     );
@@ -74,7 +107,13 @@ const Movie = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ ...inputs })
+
+    const movie = {
+      ...inputs,
+    };
+
+    dispatch(updateMovie({ movieId, movie }));
+    navigate('/movies');
   };
 
   useEffect(() => {
@@ -94,6 +133,10 @@ const Movie = () => {
     });
   }, [movie]);
 
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
+
   return (
     <Container>
       <TitleContainer>
@@ -111,7 +154,7 @@ const Movie = () => {
           <InfoBottom>
             <InfoItem>
               <InfoKey>id:</InfoKey>
-              <InfoValue>{movie._id}</InfoValue>
+              <InfoValue>{movieId}</InfoValue>
             </InfoItem>
             <InfoItem>
               <InfoKey>genre:</InfoKey>
@@ -172,48 +215,88 @@ const Movie = () => {
               <Label>Limit</Label>
             </FormGroup>
             <FormGroup>
-              <Input
-                id='img'
-                type='file'
-                accept='image/*'
-                onChange={(e) => setImg(e.target.files[0])}
-              />
+              {imgPerc > 0 ? (
+                <Line
+                  percent={imgPerc}
+                  strokeWidth={1}
+                  strokeColor='#8884d8'
+                />
+              ) : (
+                <Input
+                  id='img'
+                  type='file'
+                  accept='image/*'
+                  onChange={(e) => setImg(e.target.files[0])}
+                />
+              )}
               <Label htmlFor='img'>Image</Label>
             </FormGroup>
             <FormGroup>
-              <Input
-                type='file'
-                id='imgTitle'
-                accept='image/*'
-                onChange={(e) => setImgTitle(e.target.files[0])}
-              />
+              {imgTitlePerc > 0 ? (
+                <Line
+                  percent={imgTitlePerc}
+                  strokeWidth={1}
+                  strokeColor='#8884d8'
+                />
+              ) : (
+                <Input
+                  type='file'
+                  id='imgTitle'
+                  accept='image/*'
+                  onChange={(e) => setImgTitle(e.target.files[0])}
+                />
+              )}
               <Label htmlFor='imgTitle'>Title image</Label>
             </FormGroup>
             <FormGroup>
-              <Input
-                id='imgSm'
-                type='file'
-                accept='image/*'
-                onChange={(e) => setImgSm(e.target.files[0])}
-              />
+              {imgSmPerc > 0 ? (
+                <Line
+                  percent={imgSmPerc}
+                  strokeWidth={1}
+                  strokeColor='#8884d8'
+                />
+              ) : (
+                <Input
+                  id='imgSm'
+                  type='file'
+                  accept='image/*'
+                  onChange={(e) => setImgSm(e.target.files[0])}
+                />
+              )}
               <Label htmlFor='imgSm'>Thumbnail image</Label>
             </FormGroup>
             <FormGroup>
-              <Input
-                type='file'
-                id='trailer'
-                accept='video/*'
-                onChange={(e) => setTrailer(e.target.files[0])}
-              />
+              {videoPerc > 0 ? (
+                <Line
+                  percent={videoPerc}
+                  strokeWidth={1}
+                  strokeColor='#8884d8'
+                />
+              ) : (
+                <Input
+                  type='file'
+                  id='trailer'
+                  accept='video/*'
+                  onChange={(e) => setTrailer(e.target.files[0])}
+                />
+              )}
               <Label htmlFor='trailer'>Trailer</Label>
             </FormGroup>
             <FormGroup>
-              <Input
-                id='video'
-                type='file'
-                accept='video/*'
-                onChange={(e) => setVideo(e.target.files[0])}
-              />
+              {trailerPerc > 0 ? (
+                <Line
+                  percent={trailerPerc}
+                  strokeWidth={1}
+                  strokeColor='#8884d8'
+                />
+              ) : (
+                <Input
+                  id='video'
+                  type='file'
+                  accept='video/*'
+                  onChange={(e) => setVideo(e.target.files[0])}
+                />
+              )}
               <Label htmlFor='video'>Video</Label>
             </FormGroup>
           </FormLeft>
@@ -229,7 +312,7 @@ const Movie = () => {
                 style={{ display: 'none' }}
               />
             </FileUpload>
-            <Button>Update</Button>
+            <Button disabled={isFetching}>Update</Button>
           </FormRight>
         </Form>
       </Bottom>
