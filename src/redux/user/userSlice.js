@@ -146,13 +146,11 @@ export const userSlice = createSlice({
     [registerUser.fulfilled]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = true;
-      setToStorage(tokenKey, payload);
-      state.currentUser = payload;
+      state.users.push(payload);
     },
     [registerUser.rejected]: (state, { payload }) => {
       state.isFetching = false;
       state.isSuccess = false;
-      state.currentUser = null;
       state.error = payload.message;
     },
     [fetchUsers.pending]: (state) => {
