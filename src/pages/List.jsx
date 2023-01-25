@@ -1,14 +1,37 @@
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import { phone } from 'responsive';
 
+const initialState = {
+  type: '',
+  title: '',
+  genre: '',
+};
+
 const List = () => {
   const { state: list } = useLocation();
+  const [data, setData] = useState(initialState);
+
+  const { type, title, genre } = data;
+
+  const handleChange = ({ target: input }) => {
+    const { id, value } = input;
+    setData((prev) => ({ ...prev, [id]: value }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    setData({
+      type: list.type,
+      title: list.title,
+      genre: list.genre,
+    });
+  }, [list]);
 
   return (
     <Container>
@@ -43,16 +66,34 @@ const List = () => {
         <Form onSubmit={handleSubmit}>
           <FormLeft>
             <FormGroup>
-              <Input type='text' placeholder={list.title} />
-              <Label>List title</Label>
+              <Input
+                id='title'
+                type='text'
+                value={title || ''}
+                placeholder={list.title}
+                onChange={handleChange}
+              />
+              <Label htmlFor='title'>List title</Label>
             </FormGroup>
             <FormGroup>
-              <Input type='text' placeholder={list.type} />
-              <Label>Type</Label>
+              <Input
+                id='type'
+                type='text'
+                value={type || ''}
+                placeholder={list.type}
+                onChange={handleChange}
+              />
+              <Label htmlFor='type'>Type</Label>
             </FormGroup>
             <FormGroup>
-              <Input type='text' placeholder={list.genre} />
-              <Label>Genre</Label>
+              <Input
+                id='genre'
+                type='text'
+                value={genre || ''}
+                placeholder={list.genre}
+                onChange={handleChange}
+              />
+              <Label htmlFor='genre'>Genre</Label>
             </FormGroup>
           </FormLeft>
           <FormRight>
