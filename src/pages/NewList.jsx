@@ -106,6 +106,7 @@ const Container = styled.div`
   flex: 4;
   padding: 2rem;
   font-size: 1.5rem;
+  background-color: ${({ theme }) => theme.bg};
 `;
 
 const Title = styled.h1`
@@ -142,8 +143,9 @@ const Input = styled.input`
   padding: 1rem 2rem;
   font-size: 1.2rem;
   font-family: inherit;
+  background-color: transparent;
   color: #999;
-  caret-color: #00008b;
+  caret-color: ${({ theme }) => theme.crInput};
   border: 1px solid gray;
   border-radius: 3px;
   -webkit-transition: all 0.5s ease;
@@ -151,9 +153,9 @@ const Input = styled.input`
 
   &:focus {
     outline: none;
-    -webkit-box-shadow: 0 1rem 2rem rgba(00, 00, 00, 0.1);
-    -moz-box-shadow: 0 1rem 2rem rgba(00, 00, 00, 0.1);
-    box-shadow: 0 1rem 2rem rgba(00, 00, 00, 0.1);
+    -webkit-box-shadow: ${({ theme }) => theme.box};
+    -moz-box-shadow: ${({ theme }) => theme.box};
+    box-shadow: ${({ theme }) => theme.box};
   }
 
   &::-webkit-input-placeholder {
@@ -166,6 +168,7 @@ const Select = styled.select`
   padding: 1rem 2rem;
   font-size: 1.2rem;
   font-family: inherit;
+  background-color: transparent;
   color: #999;
   width: 40rem;
   height: ${(props) => props.type === 'content' && '28.5rem'};
@@ -177,9 +180,9 @@ const Select = styled.select`
 
   &:focus {
     outline: none;
-    -webkit-box-shadow: 0 1rem 2rem rgba(00, 00, 00, 0.1);
-    -moz-box-shadow: 0 1rem 2rem rgba(00, 00, 00, 0.1);
-    box-shadow: 0 1rem 2rem rgba(00, 00, 00, 0.1);
+    -webkit-box-shadow: ${({ theme }) => theme.box};
+    -moz-box-shadow: ${({ theme }) => theme.box};
+    box-shadow: ${({ theme }) => theme.box};
   }
 `;
 
@@ -191,10 +194,11 @@ const Button = styled.button`
   height: 3rem;
   padding: 0.7rem 2rem;
   text-transform: capitalize;
-  background-color: #00008b;
-  color: var(--color-white);
+  background-color: ${({ theme }) => theme.btnNew};
+  color: ${({ theme }) => theme.textNew};
   border-radius: 0.5rem;
   margin-top: 2rem;
+  outline-color: ${({ theme }) => theme.text};
   cursor: pointer;
   align-self: center;
   -webkit-transition: all 0.5s ease;
@@ -204,8 +208,9 @@ const Button = styled.button`
     transform: translate(3px);
   }
 
-  &:focus {
-    outline: none;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `;
 
