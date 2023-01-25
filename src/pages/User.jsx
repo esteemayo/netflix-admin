@@ -104,6 +104,7 @@ const User = () => {
               <FormGroup>
                 <FormInput
                   type='text'
+                  name='username'
                   value={inputs.username}
                   placeholder={user.username}
                   onChange={handleChange}
@@ -114,6 +115,7 @@ const User = () => {
               <FormGroup>
                 <FormInput
                   type='email'
+                  name='email'
                   value={inputs.email}
                   placeholder={user.email}
                   onChange={handleChange}
