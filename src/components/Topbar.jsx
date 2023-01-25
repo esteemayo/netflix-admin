@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { DarkModeOutlined, LightModeOutlined } from '@mui/icons-material';
 import {
   ArrowDropDown,
   Language,
@@ -9,11 +10,13 @@ import {
 } from '@material-ui/icons';
 
 import { logout } from 'redux/user/userSlice';
+import { toggle } from 'redux/darkMode/darkModeSlice';
 
 const Topbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
+  const { darkMode } = useSelector((state) => state.darkMode);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -24,9 +27,20 @@ const Topbar = () => {
     <Container>
       <Wrapper>
         <TopLeft>
-          <Logo>Dashboard</Logo>
+          <Link to='/' className='link'>
+            <Logo>Dashboard</Logo>
+          </Link>
         </TopLeft>
         <TopRight>
+          <IconContainer>
+            <Mode onClick={() => dispatch(toggle())}>
+              {darkMode ? (
+                <LightModeOutlined style={{ fontSize: '2rem' }} />
+              ) : (
+                <DarkModeOutlined style={{ fontSize: '2rem' }} />
+              )}
+            </Mode>
+          </IconContainer>
           <IconContainer>
             <NotificationsNone style={{ fontSize: '2rem' }} />
             <TopIconBadge>2</TopIconBadge>
@@ -38,7 +52,10 @@ const Topbar = () => {
           <IconContainer>
             <Settings style={{ fontSize: '2rem' }} />
           </IconContainer>
-          <Image src={currentUser?.avatar || 'assets/img/user-default.jpg'} />
+          <Image
+            src={currentUser?.avatar ?? 'assets/img/user-default.jpg'}
+            alt=''
+          />
           <Profile>
             <ArrowDropDown className='icon' />
             <Options>
@@ -54,7 +71,7 @@ const Topbar = () => {
 const Container = styled.div`
   width: 100%;
   height: 5rem;
-  background-color: var(--color-white);
+  background-color: ${({ theme }) => theme.bg};
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -74,7 +91,7 @@ const Logo = styled.div`
   font-size: 3rem;
   font-weight: bold;
   font-family: 'Great Vibes', cursive;
-  color: #00008b;
+  color: ${({ theme }) => theme.logo};
   cursor: pointer;
 `;
 
@@ -87,7 +104,12 @@ const IconContainer = styled.div`
   position: relative;
   cursor: pointer;
   margin-right: 1rem;
-  color: #555;
+  color: ${({ theme }) => theme.textSoft};
+`;
+
+const Mode = styled.span`
+  text-transform: uppercase;
+  font-size: 1.35rem;
 `;
 
 const TopIconBadge = styled.span`
@@ -116,12 +138,14 @@ const Image = styled.img`
 
 const Options = styled.div`
   display: none;
-  background-color: #0b0b0b;
-  color: var(--color-white);
+  background-color: ${({ theme }) => theme.bgOption};
+  color: ${({ theme }) => theme.option};
   border-radius: 0.5rem;
 `;
 
 const Profile = styled.div`
+  color: ${({ theme }) => theme.text};
+
   &:hover ${Options} {
     display: flex;
     flex-direction: column;
