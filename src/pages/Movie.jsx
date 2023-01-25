@@ -21,6 +21,13 @@ const initialState = {
 
 const Movie = () => {
   const { state: movie } = useLocation();
+
+  const [img, setImg] = useState(null);
+  const [imgSm, setImgSm] = useState(null);
+  const [video, setVideo] = useState(null);
+  const [uploaded, setUploaded] = useState(0);
+  const [trailer, setTrailer] = useState(null);
+  const [imgTitle, setImgTitle] = useState(null);
   const [inputs, setInputs] = useState(initialState);
 
   const handleChange = ({ target: input }) => {
@@ -28,6 +35,11 @@ const Movie = () => {
     if (type === 'number') Number(input);
     setInputs((prev) => ({ ...prev, [id]: value }));
   };
+
+  const handleUpload = (e) => {
+    e.preventDefault();
+
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -122,17 +134,48 @@ const Movie = () => {
             </FormGroup>
             <FormGroup>
               <Input
+                id='img'
                 type='file'
-                placeholder={movie.trailer}
+                accept='image/*'
+                onChange={(e) => setImg(e.target.files[0])}
               />
-              <Label>Trailer</Label>
+              <Label htmlFor='img'>Image</Label>
             </FormGroup>
             <FormGroup>
               <Input
                 type='file'
-                placeholder={movie.video}
+                id='imgTitle'
+                accept='image/*'
+                onChange={(e) => setImgTitle(e.target.files[0])}
               />
-              <Label>Video</Label>
+              <Label htmlFor='imgTitle'>Title image</Label>
+            </FormGroup>
+            <FormGroup>
+              <Input
+                id='imgSm'
+                type='file'
+                accept='image/*'
+                onChange={(e) => setImgSm(e.target.files[0])}
+              />
+              <Label htmlFor='imgSm'>Thumbnail image</Label>
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type='file'
+                id='trailer'
+                accept='video/*'
+                onChange={(e) => setTrailer(e.target.files[0])}
+              />
+              <Label htmlFor='trailer'>Trailer</Label>
+            </FormGroup>
+            <FormGroup>
+              <Input
+                id='video'
+                type='file'
+                accept='video/*'
+                onChange={(e) => setVideo(e.target.files[0])}
+              />
+              <Label htmlFor='video'>Video</Label>
             </FormGroup>
           </FormLeft>
           <FormRight>
