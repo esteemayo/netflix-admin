@@ -15,10 +15,16 @@ const Chart = ({ title, data, dataKey, grid }) => {
       <Title>{title}</Title>
       <ResponsiveContainer width='100%' aspect={4 / 1}>
         <LineChart data={data}>
-          <XAxis dataKey='name' stroke='#5550bd' />
-          <Line type='monotone' dataKey={dataKey} stroke='#5550bd' />
+          <XAxis dataKey='name' stroke='#8884d8' />
+          <Line type='monotone' dataKey={dataKey} stroke='#8884d8' />
           <Tooltip />
-          {grid && <CartesianGrid stroke='#e0dfdf' strokeDasharray='5 5' />}
+          {grid && (
+            <CartesianGrid
+              stroke='#e0dfdf'
+              strokeDasharray='5 5'
+              className='chart-grid'
+            />
+          )}
           <Legend />
         </LineChart>
       </ResponsiveContainer>
@@ -29,15 +35,16 @@ const Chart = ({ title, data, dataKey, grid }) => {
 const Container = styled.div`
   margin: 2rem;
   padding: 2rem;
-  -webkit-box-shadow: 0 0 1.5rem -1rem rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0 0 1.5rem -1rem rgba(0, 0, 0, 0.75);
-  box-shadow: 0 0 1.5rem -1rem rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: ${({ theme }) => theme.box};
+  -moz-box-shadow: ${({ theme }) => theme.box};
+  box-shadow: ${({ theme }) => theme.box};
 `;
 
 const Title = styled.h3`
   text-transform: capitalize;
   font-size: 1.5rem;
   margin-bottom: 2rem;
+  color: ${({ theme }) => theme.textSoft};
 `;
 
 export default Chart;
