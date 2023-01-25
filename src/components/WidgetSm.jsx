@@ -54,9 +54,9 @@ const Container = styled.div`
   flex: 1;
   padding: 2rem;
   margin-right: 2rem;
-  -webkit-box-shadow: 0 0 1.5rem -1rem rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0 0 1.5rem -1rem rgba(0, 0, 0, 0.75);
-  box-shadow: 0 0 1.5rem -1rem rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: ${({ theme }) => theme.box};
+  -moz-box-shadow: ${({ theme }) => theme.box};
+  box-shadow: ${({ theme }) => theme.box};
 
   ${phone({
   marginBottom: '1rem',
@@ -68,6 +68,7 @@ const Title = styled.span`
   text-transform: capitalize;
   font-size: 2.2rem;
   font-weight: 600;
+  color: ${({ theme }) => theme.textSoft};
 `;
 
 const List = styled.ul`
@@ -108,8 +109,8 @@ const Button = styled.button`
   font-size: 1.5rem;
   border-radius: 5px;
   padding: 0.7rem 1rem;
-  background-color: #eeeef7;
-  color: #555;
+  background-color: ${({ theme }) => theme.soft};
+  color: ${({ theme }) => theme.textSoft};
   cursor: pointer;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
