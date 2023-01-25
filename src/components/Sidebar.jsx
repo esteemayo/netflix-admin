@@ -27,7 +27,7 @@ const Sidebar = () => {
         <SidebarMenu>
           <Title>Dashboard</Title>
           <SidebarList>
-            <SidebarListItem active>
+            <SidebarListItem>
               <NavLink to='/'>
                 <LineStyle
                   style={{ fontSize: '2rem', marginRight: '0.5rem' }}
@@ -160,6 +160,7 @@ const SidebarList = styled.ul`
 
 const SidebarListItem = styled.li`
   padding: 0.5rem;
+  color: ${({ theme }) => theme.text};
   cursor: pointer;
 
   display: flex;
