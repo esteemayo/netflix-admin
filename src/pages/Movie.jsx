@@ -164,7 +164,7 @@ const Image = styled.img`
 
 const MovieTitle = styled.span`
   text-transform: capitalize;
-  fon-weight: 600;
+  font-weight: 600;
   margin-left: 2rem;
 `;
 
