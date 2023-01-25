@@ -1,15 +1,45 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Publish } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from 'firebase/storage';
 
+import app from '../firebase';
 import { phone } from 'responsive';
+
+const initialState = {
+  title: '',
+  year: '',
+  genre: '',
+  limit: '',
+}
 
 const Movie = () => {
   const { state: movie } = useLocation();
+  const [inputs, setInputs] = useState(initialState);
+
+  const handleChange = ({ target: input }) => {
+    const { id, value } = input;
+    setInputs((prev) => ({ ...prev, [id]: value }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    setInputs({
+      title: movie.title,
+      year: movie.year,
+      genre: movie.genre,
+      limit: movie.limit,
+    });
+  }, [movie]);
 
   return (
     <Container>
@@ -49,27 +79,57 @@ const Movie = () => {
         <Form onSubmit={handleSubmit}>
           <FormLeft>
             <FormGroup>
-              <Input type='text' placeholder={movie.title} />
+              <Input
+                id='title'
+                type='text'
+                value={inputs.title || ''}
+                placeholder={movie.title}
+                onChange={handleChange}
+              />
               <Label>Movie title</Label>
             </FormGroup>
             <FormGroup>
-              <Input type='text' placeholder={movie.year} />
+              <Input
+                id='year'
+                type='text'
+                value={inputs.year || ''}
+                placeholder={movie.year}
+                onChange={handleChange}
+              />
               <Label>Year</Label>
             </FormGroup>
             <FormGroup>
-              <Input type='text' placeholder={movie.genre} />
+              <Input
+                id='genre'
+                type='text'
+                value={inputs.genre || ''}
+                placeholder={movie.genre}
+                onChange={handleChange}
+              />
               <Label>Genre</Label>
             </FormGroup>
             <FormGroup>
-              <Input type='text' placeholder={movie.limit} />
+              <Input
+                id='limit'
+                type='text'
+                value={inputs.limit || ''}
+                placeholder={movie.limit}
+                onChange={handleChange}
+              />
               <Label>Limit</Label>
             </FormGroup>
             <FormGroup>
-              <Input type='file' placeholder={movie.trailer} />
+              <Input
+                type='file'
+                placeholder={movie.trailer}
+              />
               <Label>Trailer</Label>
             </FormGroup>
             <FormGroup>
-              <Input type='file' placeholder={movie.video} />
+              <Input
+                type='file'
+                placeholder={movie.video}
+              />
               <Label>Video</Label>
             </FormGroup>
           </FormLeft>
