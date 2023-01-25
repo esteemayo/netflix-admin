@@ -116,7 +116,7 @@ export const userSlice = createSlice({
   reducers: {
     logout: (state) => {
       clearStorage();
-      state.user = null;
+      state.currentUser = null;
     },
     reset: (state) => {
       state.isFetching = false;
