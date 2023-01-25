@@ -273,9 +273,9 @@ const Movie = () => {
               <Label htmlFor='imgSm'>Thumbnail image</Label>
             </FormGroup>
             <FormGroup>
-              {videoPerc > 0 ? (
+              {trailerPerc > 0 ? (
                 <Line
-                  percent={videoPerc}
+                  percent={trailerPerc}
                   strokeWidth={1}
                   strokeColor='#8884d8'
                 />
@@ -290,9 +290,9 @@ const Movie = () => {
               <Label htmlFor='trailer'>Trailer</Label>
             </FormGroup>
             <FormGroup>
-              {trailerPerc > 0 ? (
+              {videoPerc > 0 ? (
                 <Line
-                  percent={trailerPerc}
+                  percent={videoPerc}
                   strokeWidth={1}
                   strokeColor='#8884d8'
                 />
