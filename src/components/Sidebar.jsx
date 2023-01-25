@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import {
   BarChart,
   ChatBubbleOutline,
@@ -12,8 +14,6 @@ import {
   TrendingUp,
   WorkOutline,
 } from '@material-ui/icons';
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
