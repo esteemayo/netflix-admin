@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { useEffect, useMemo, useState } from 'react';
 
 import { phone } from 'responsive';
@@ -10,6 +11,7 @@ import { getUsersStats } from 'services/userService';
 
 const Home = () => {
   const [userStats, setUserStats] = useState([]);
+  const { currentUser } = useSelector((state) => state.user);
 
   const MONTHS = useMemo(
     () => [
@@ -50,6 +52,10 @@ const Home = () => {
     })();
   }, [MONTHS]);
 
+  if (!currentUser) {
+    return null;
+  }
+
   return (
     <Container>
       <FeaturedInfo />
@@ -69,6 +75,7 @@ const Home = () => {
 
 const Container = styled.div`
   flex: 4;
+  background-color: ${({ theme }) => theme.bg};
 `;
 
 const Widget = styled.div`
