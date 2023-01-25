@@ -309,9 +309,9 @@ const Movie = () => {
           </FormLeft>
           <FormRight>
             <FileUpload>
-              <Img src={movie.img} alt='' />
+              <Img src={img ? URL.createObjectURL(img) : movie.img} alt='' />
               <Label htmlFor='file'>
-                <Publish style={{ fontSize: '2rem', cursor: 'pointer' }} />
+                <Publish style={{ fontSize: '2rem', cursor: 'pointer', display: 'none' }} />
               </Label>
               <Input
                 id='file'
@@ -434,6 +434,7 @@ const Form = styled.form`
 `;
 
 const FormLeft = styled.div`
+  flex: 3;
   display: flex;
   flex-direction: column;
 `;
@@ -483,6 +484,7 @@ const Input = styled.input`
 `;
 
 const FormRight = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -494,8 +496,8 @@ const FileUpload = styled.div`
 `;
 
 const Img = styled.img`
-  width: 10rem;
-  height: 10rem;
+  width: 30rem;
+  height: 30rem;
   border-radius: 1rem;
   display: block;
   object-fit: cover;
