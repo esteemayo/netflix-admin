@@ -30,15 +30,15 @@ const Movie = () => {
   const { error, isFetching } = useSelector((state) => state.movies);
 
   const [img, setImg] = useState(null);
-  const [imgPerc, setImgPerc] = useState(50);
+  const [imgPerc, setImgPerc] = useState(0);
   const [imgSm, setImgSm] = useState(null);
-  const [imgSmPerc, setImgSmPerc] = useState(10);
+  const [imgSmPerc, setImgSmPerc] = useState(0);
   const [video, setVideo] = useState(null);
-  const [videoPerc, setVideoPerc] = useState(40);
+  const [videoPerc, setVideoPerc] = useState(0);
   const [trailer, setTrailer] = useState(null);
-  const [trailerPerc, setTrailerPerc] = useState(90);
+  const [trailerPerc, setTrailerPerc] = useState(0);
   const [imgTitle, setImgTitle] = useState(null);
-  const [imgTitlePerc, setImgTitlePerc] = useState(100);
+  const [imgTitlePerc, setImgTitlePerc] = useState(0);
   const [inputs, setInputs] = useState(initialState);
 
   const movieId = movie?._id;
@@ -115,6 +115,13 @@ const Movie = () => {
     dispatch(updateMovie({ movieId, movie }));
     navigate('/movies');
   };
+
+  const disableBtn = isFetching ||
+    (imgPerc > 0 && imgPerc < 100) ||
+    (imgSmPerc > 0 && imgSmPerc < 100) ||
+    (imgTitlePerc > 0 && imgTitlePerc < 100) ||
+    (videoPerc > 0 && videoPerc < 100) ||
+    (trailerPerc > 0 && trailerPerc < 100)
 
   useEffect(() => {
     img && uploadFile(img, 'img');
@@ -312,7 +319,7 @@ const Movie = () => {
                 style={{ display: 'none' }}
               />
             </FileUpload>
-            <Button disabled={isFetching}>Update</Button>
+            <Button disabled={disableBtn}>Update</Button>
           </FormRight>
         </Form>
       </Bottom>
