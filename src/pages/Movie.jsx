@@ -17,19 +17,21 @@ const initialState = {
   year: '',
   genre: '',
   limit: '',
-}
+};
 
 const Movie = () => {
   const { state: movie } = useLocation();
   const [inputs, setInputs] = useState(initialState);
 
   const handleChange = ({ target: input }) => {
-    const { id, value } = input;
+    const { id, type, value } = input;
+    if (type === 'number') Number(input);
     setInputs((prev) => ({ ...prev, [id]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log({ ...inputs })
   };
 
   useEffect(() => {
