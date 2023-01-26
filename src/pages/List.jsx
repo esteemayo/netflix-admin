@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { toast } from 'react-toastify';
+import { useDispatch, } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { phone } from 'responsive';
@@ -17,7 +16,6 @@ const List = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { state: list } = useLocation();
-  const { isFetching, error } = useSelector((state) => state.lists);
 
   const [data, setData] = useState(initialState);
 
@@ -43,10 +41,6 @@ const List = () => {
       genre: list.genre,
     });
   }, [list]);
-
-  useEffect(() => {
-    error && toast.error(error);
-  }, [error]);
 
   return (
     <Container>
@@ -112,7 +106,7 @@ const List = () => {
             </FormGroup>
           </FormLeft>
           <FormRight>
-            <Button disabled={isFetching}>Update</Button>
+            <Button>Update</Button>
           </FormRight>
         </Form>
       </Bottom>
