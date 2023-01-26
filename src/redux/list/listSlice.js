@@ -29,6 +29,7 @@ export const updateList = createAsyncThunk(
   'movies/updateList',
   async (listId, list, { rejectWithValue }) => {
     try {
+      console.log(listId, list)
       const { data } = await listAPI.editList(listId, list);
       return data.list;
     } catch (err) {
