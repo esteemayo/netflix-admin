@@ -434,7 +434,6 @@ const Form = styled.form`
 `;
 
 const FormLeft = styled.div`
-  flex: 3;
   display: flex;
   flex-direction: column;
 `;
@@ -484,7 +483,6 @@ const Input = styled.input`
 `;
 
 const FormRight = styled.div`
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
