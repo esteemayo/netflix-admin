@@ -141,7 +141,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   font-size: 1.5rem;
   padding: 2rem;
-  color: #555;
+  color: ${({ theme }) => theme.text};
 `;
 
 const SidebarMenu = styled.div`
