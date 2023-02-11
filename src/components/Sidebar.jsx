@@ -135,6 +135,7 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.bgLight};
   position: sticky;
   top: 5rem;
+  padding-top: 1rem;
 `;
 
 const Wrapper = styled.div`
