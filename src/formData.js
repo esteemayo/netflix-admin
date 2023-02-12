@@ -21,9 +21,9 @@ export const userInputs = [
     placeholder: 'Password',
   },
   {
-    id: 'passwordConfirm',
+    id: 'confirmPassword',
     type: 'password',
-    name: 'passwordConfirm',
+    name: 'confirmPassword',
     label: 'Confirm Password',
     placeholder: 'Confirm Password',
   },
