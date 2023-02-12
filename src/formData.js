@@ -63,7 +63,6 @@ export const movieInputs = [
   {
     id: 'year',
     type: 'text',
-    name: 'year',
     label: 'Year',
     placeholder: '',
   },
