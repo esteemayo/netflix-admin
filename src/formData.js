@@ -75,7 +75,6 @@ export const movieInputs = [
   {
     id: 'limit',
     type: 'text',
-    name: 'limit',
     label: 'Limit',
     placeholder: '',
   },
