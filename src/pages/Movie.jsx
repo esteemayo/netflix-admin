@@ -185,6 +185,7 @@ const Movie = () => {
         <Form onSubmit={handleSubmit}>
           <FormLeft>
             {updateMovieInputs.map((input) => {
+              const { id, type, label } = input;
               return (
                 <FormGroup>
                   <Input
