@@ -82,6 +82,7 @@ const NewUser = () => {
       <Form onSubmit={handleSubmit}>
         <FormContainer>
           {userInputs.map((input) => {
+            const { id, name, type, label, placeholder } = input;
             return (
               <FormGroup>
                 <FormInput
