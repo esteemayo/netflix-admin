@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import {
   AreaChart,
   Area,
-  LineChart,
-  Line,
   XAxis,
   CartesianGrid,
   Tooltip,
