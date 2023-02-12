@@ -187,15 +187,15 @@ const Movie = () => {
             {updateMovieInputs.map((input) => {
               const { id, type, label } = input;
               return (
-                <FormGroup>
+                <FormGroup key={id}>
                   <Input
-                    id='title'
-                    type='text'
-                    value={inputs.title || ''}
-                    placeholder={movie.title}
+                    id={id}
+                    type={type}
+                    value={inputs[id] || ''}
+                    placeholder={movie[id]}
                     onChange={handleChange}
                   />
-                  <Label>Movie title</Label>
+                  <Label>{label}</Label>
                 </FormGroup>
               );
             })}
