@@ -94,7 +94,7 @@ export const movieInputs = [
     type: 'number',
     name: 'limit',
     label: 'Limit',
-    placeholder: '',
+    placeholder: 'Limit',
   },
 ];
 
