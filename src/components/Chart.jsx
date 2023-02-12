@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import {
   AreaChart,
   Area,
@@ -8,7 +9,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import { useSelector } from 'react-redux';
 
 const Chart = ({ title, data, dataKey, grid }) => {
   const { darkMode } = useSelector((state) => state.darkMode);
