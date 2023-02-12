@@ -79,3 +79,48 @@ export const movieInputs = [
     placeholder: '',
   },
 ];
+
+export const updateMovieInputs = [
+  {
+    id: 'title',
+    type: 'text',
+    name: 'title',
+    label: 'Title',
+    placeholder: 'Title',
+  },
+  {
+    id: 'description',
+    type: 'text',
+    name: 'description',
+    label: 'Description',
+    placeholder: 'Description',
+  },
+  {
+    id: 'year',
+    type: 'text',
+    name: 'desc',
+    label: 'Year',
+    placeholder: 'Year',
+  },
+  {
+    id: 'genre',
+    type: 'text',
+    name: 'year',
+    label: 'Genre',
+    placeholder: 'Genre',
+  },
+  {
+    id: 'duration',
+    type: 'text',
+    name: 'duration',
+    label: 'Duration',
+    placeholder: 'Duration',
+  },
+  {
+    id: 'limit',
+    type: 'text',
+    name: 'limit',
+    label: 'Limit',
+    placeholder: '',
+  },
+];
