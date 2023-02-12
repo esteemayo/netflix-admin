@@ -130,8 +130,8 @@ const User = () => {
                   <Publish style={{ fontSize: '2rem', cursor: 'pointer' }} />
                 </FormLabel>
                 <FormInput
-                  type='file'
                   id='file'
+                  type='file'
                   style={{ display: 'none' }}
                 />
               </Upload>
