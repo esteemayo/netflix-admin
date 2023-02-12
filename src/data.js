@@ -285,7 +285,7 @@ export const movieColumns = [
     renderCell: (params) => {
       return (
         <MovieListUser>
-          <Image src={params.row.img} />
+          <Image src={params.row.img} alt='' />
           {params.row.title}
         </MovieListUser>
       );
