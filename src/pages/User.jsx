@@ -132,6 +132,7 @@ const User = () => {
                 <FormInput
                   id='file'
                   type='file'
+                  accept='image/*'
                   style={{ display: 'none' }}
                 />
               </Upload>
