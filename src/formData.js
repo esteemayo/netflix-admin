@@ -53,33 +53,6 @@ export const updateUserInputs = [
   },
 ];
 
-export const movieInputs = [
-  {
-    id: 'title',
-    type: 'text',
-    label: 'Movie title',
-    placeholder: '',
-  },
-  {
-    id: 'year',
-    type: 'text',
-    label: 'Year',
-    placeholder: '',
-  },
-  {
-    id: 'genre',
-    type: 'text',
-    label: 'Genre',
-    placeholder: '',
-  },
-  {
-    id: 'limit',
-    type: 'text',
-    label: 'Limit',
-    placeholder: '',
-  },
-];
-
 export const updateMovieInputs = [
   {
     id: 'title',
@@ -120,6 +93,33 @@ export const updateMovieInputs = [
     id: 'limit',
     type: 'text',
     name: 'limit',
+    label: 'Limit',
+    placeholder: '',
+  },
+];
+
+export const movieInputs = [
+  {
+    id: 'title',
+    type: 'text',
+    label: 'Movie title',
+    placeholder: '',
+  },
+  {
+    id: 'year',
+    type: 'text',
+    label: 'Year',
+    placeholder: '',
+  },
+  {
+    id: 'genre',
+    type: 'text',
+    label: 'Genre',
+    placeholder: '',
+  },
+  {
+    id: 'limit',
+    type: 'text',
     label: 'Limit',
     placeholder: '',
   },
