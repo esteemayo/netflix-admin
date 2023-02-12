@@ -92,36 +92,6 @@ const NewUser = () => {
           </FormGroup>
           <FormGroup>
             <FormInput
-              type='email'
-              name='email'
-              placeholder='Email'
-              required
-              onChange={handleChange}
-            />
-            <FormLabel>Email</FormLabel>
-          </FormGroup>
-          <FormGroup>
-            <FormInput
-              type='password'
-              name='password'
-              placeholder='Password'
-              required
-              onChange={handleChange}
-            />
-            <FormLabel>Password</FormLabel>
-          </FormGroup>
-          <FormGroup>
-            <FormInput
-              type='password'
-              name='confirmPassword'
-              placeholder='Confirm Password'
-              required
-              onChange={handleChange}
-            />
-            <FormLabel>Confirm password</FormLabel>
-          </FormGroup>
-          <FormGroup>
-            <FormInput
               id='file'
               type='file'
               accept='image/*'
