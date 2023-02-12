@@ -123,6 +123,7 @@ const NewMovie = () => {
             type='file'
             id='img'
             name='img'
+            accept='image/*'
             onChange={(e) => setImg(e.target.files[0])}
           />
         </FormGroup>
