@@ -84,15 +84,15 @@ const NewUser = () => {
           {userInputs.map((input) => {
             const { id, name, type, label, placeholder } = input;
             return (
-              <FormGroup>
+              <FormGroup key={id}>
                 <FormInput
-                  type='text'
-                  name='username'
-                  placeholder='Username'
+                  type={type}
+                  name={name}
+                  placeholder={placeholder}
                   required
                   onChange={handleChange}
                 />
-                <FormLabel>Username</FormLabel>
+                <FormLabel>{label}</FormLabel>
               </FormGroup>
             );
           })}
