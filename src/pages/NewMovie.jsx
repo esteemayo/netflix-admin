@@ -141,6 +141,7 @@ const NewMovie = () => {
             type='file'
             id='imgSm'
             name='imgSm'
+            accept='image/*'
             onChange={(e) => setImgSm(e.target.files[0])}
           />
         </FormGroup>
