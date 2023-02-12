@@ -159,22 +159,24 @@ const Movie = () => {
             <MovieTitle>{movie.title}</MovieTitle>
           </InfoTop>
           <InfoBottom>
-            <InfoItem>
-              <InfoKey>id:</InfoKey>
-              <InfoValue>{movieId}</InfoValue>
-            </InfoItem>
-            <InfoItem>
-              <InfoKey>genre:</InfoKey>
-              <InfoValue>{movie.genre}</InfoValue>
-            </InfoItem>
-            <InfoItem>
-              <InfoKey>year:</InfoKey>
-              <InfoValue>{movie.year}</InfoValue>
-            </InfoItem>
-            <InfoItem>
-              <InfoKey>limit:</InfoKey>
-              <InfoValue>{movie.limit}</InfoValue>
-            </InfoItem>
+            <InfoBottonWrapper>
+              <InfoItem>
+                <InfoKey>id:</InfoKey>
+                <InfoValue>{movieId}</InfoValue>
+              </InfoItem>
+              <InfoItem>
+                <InfoKey>genre:</InfoKey>
+                <InfoValue>{movie.genre}</InfoValue>
+              </InfoItem>
+              <InfoItem>
+                <InfoKey>year:</InfoKey>
+                <InfoValue>{movie.year}</InfoValue>
+              </InfoItem>
+              <InfoItem>
+                <InfoKey>limit:</InfoKey>
+                <InfoValue>{movie.limit}</InfoValue>
+              </InfoItem>
+            </InfoBottonWrapper>>
           </InfoBottom>
         </TopRight>
       </Top>
