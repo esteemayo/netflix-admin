@@ -57,7 +57,6 @@ export const movieInputs = [
   {
     id: 'title',
     type: 'text',
-    name: 'title',
     label: 'Movie title',
     placeholder: '',
   },
