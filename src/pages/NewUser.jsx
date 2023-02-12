@@ -81,16 +81,20 @@ const NewUser = () => {
       <Title>New user</Title>
       <Form onSubmit={handleSubmit}>
         <FormContainer>
-          <FormGroup>
-            <FormInput
-              type='text'
-              name='username'
-              placeholder='Username'
-              required
-              onChange={handleChange}
-            />
-            <FormLabel>Username</FormLabel>
-          </FormGroup>
+          {userInputs.map((input) => {
+            return (
+              <FormGroup>
+                <FormInput
+                  type='text'
+                  name='username'
+                  placeholder='Username'
+                  required
+                  onChange={handleChange}
+                />
+                <FormLabel>Username</FormLabel>
+              </FormGroup>
+            );
+          })}
           <FormGroup>
             <FormInput
               id='file'
