@@ -45,13 +45,6 @@ export const updateUserInputs = [
     placeholder: '',
   },
   {
-    id: 'name',
-    type: 'text',
-    name: 'name',
-    label: 'Full Name',
-    placeholder: '',
-  },
-  {
     id: 'email',
     type: 'email',
     name: 'email',
