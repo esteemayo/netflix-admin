@@ -99,12 +99,12 @@ const NewMovie = () => {
         {movieInputs.map((input) => {
           const { id, name, type, label, placeholder } = input;
           return (
-            <FormGroup>
-              <Label>Title</Label>
+            <FormGroup key={id}>
+              <Label>{label}</Label>
               <Input
-                type='text'
-                name='title'
-                placeholder='Title'
+                type={type}
+                name={name}
+                placeholder={placeholder}
                 onChange={handleChange}
               />
             </FormGroup>
