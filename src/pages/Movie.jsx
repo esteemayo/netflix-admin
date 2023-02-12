@@ -184,16 +184,20 @@ const Movie = () => {
       <Bottom>
         <Form onSubmit={handleSubmit}>
           <FormLeft>
-            <FormGroup>
-              <Input
-                id='title'
-                type='text'
-                value={inputs.title || ''}
-                placeholder={movie.title}
-                onChange={handleChange}
-              />
-              <Label>Movie title</Label>
-            </FormGroup>
+            {updateMovieInputs.map((input) => {
+              return (
+                <FormGroup>
+                  <Input
+                    id='title'
+                    type='text'
+                    value={inputs.title || ''}
+                    placeholder={movie.title}
+                    onChange={handleChange}
+                  />
+                  <Label>Movie title</Label>
+                </FormGroup>
+              );
+            })}
             <FormGroup>
               {imgPerc > 0 ? (
                 <Line
