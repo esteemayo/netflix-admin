@@ -47,21 +47,6 @@ const Chart = ({ title, data, dataKey, grid }) => {
           <Legend />
         </AreaChart>
       </ResponsiveContainer>
-      {/* <ResponsiveContainer width='100%' aspect={4 / 1}>
-        <LineChart data={data}>
-          <XAxis dataKey='name' stroke='#8884d8' />
-          <Line type='monotone' dataKey={dataKey} stroke='#8884d8' />
-          <Tooltip />
-          {grid && (
-            <CartesianGrid
-              stroke='#e0dfdf'
-              strokeDasharray='5 5'
-              className='chart-grid'
-            />
-          )}
-          <Legend />
-        </LineChart>
-      </ResponsiveContainer> */}
     </Container>
   );
 };
