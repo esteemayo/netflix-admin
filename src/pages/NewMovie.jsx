@@ -132,6 +132,7 @@ const NewMovie = () => {
             type='file'
             id='imgTitle'
             name='imgTitle'
+            accept='image/*'
             onChange={(e) => setImgTitle(e.target.files[0])}
           />
         </FormGroup>
