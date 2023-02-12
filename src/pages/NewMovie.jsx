@@ -10,8 +10,8 @@ import {
 } from 'firebase/storage';
 
 import app from '../firebase';
-import { createMovie } from 'redux/movie/movieSlice';
 import { movieInputs } from 'formData';
+import { createMovie } from 'redux/movie/movieSlice';
 
 const NewMovie = () => {
   const dispatch = useDispatch();
