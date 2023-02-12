@@ -257,7 +257,9 @@ const Select = styled.select`
   }
 `;
 
-const Option = styled.option``;
+const Option = styled.option`
+  background-color: ${({ theme }) => theme.bgInput};
+`;
 
 const Button = styled.button`
   border: none;
