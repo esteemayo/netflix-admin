@@ -97,6 +97,7 @@ const NewMovie = () => {
       <Title>New movie</Title>
       <Form>
         {movieInputs.map((input) => {
+          const { id, name, type, label, placeholder } = input;
           return (
             <FormGroup>
               <Label>Title</Label>
