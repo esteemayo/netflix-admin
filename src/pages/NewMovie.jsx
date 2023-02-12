@@ -96,15 +96,19 @@ const NewMovie = () => {
     <Container>
       <Title>New movie</Title>
       <Form>
-        <FormGroup>
-          <Label>Title</Label>
-          <Input
-            type='text'
-            name='title'
-            placeholder='Title'
-            onChange={handleChange}
-          />
-        </FormGroup>
+        {movieInputs.map((input) => {
+          return (
+            <FormGroup>
+              <Label>Title</Label>
+              <Input
+                type='text'
+                name='title'
+                placeholder='Title'
+                onChange={handleChange}
+              />
+            </FormGroup>
+          );
+        })}
         <FormGroup>
           <Label>Is Series?</Label>
           <Select name='isSeries' id='isSeries' onChange={handleChange}>
