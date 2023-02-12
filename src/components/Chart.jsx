@@ -63,8 +63,8 @@ const Container = styled.div`
 const Title = styled.h3`
   text-transform: capitalize;
   font-size: 1.5rem;
-  margin-bottom: 2rem;
   color: ${({ theme }) => theme.textSoft};
+  margin-bottom: 2rem;
 `;
 
 export default Chart;
