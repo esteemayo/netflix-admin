@@ -176,7 +176,7 @@ const Movie = () => {
                 <InfoKey>limit:</InfoKey>
                 <InfoValue>{movie.limit}</InfoValue>
               </InfoItem>
-            </InfoBottonWrapper>>
+            </InfoBottonWrapper>
           </InfoBottom>
         </TopRight>
       </Top>
