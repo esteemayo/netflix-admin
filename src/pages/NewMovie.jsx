@@ -11,6 +11,7 @@ import {
 
 import app from '../firebase';
 import { createMovie } from 'redux/movie/movieSlice';
+import { movieInputs } from 'formData';
 
 const NewMovie = () => {
   const dispatch = useDispatch();
