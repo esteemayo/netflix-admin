@@ -194,36 +194,6 @@ const Movie = () => {
               <Label>Movie title</Label>
             </FormGroup>
             <FormGroup>
-              <Input
-                id='year'
-                type='text'
-                value={inputs.year || ''}
-                placeholder={movie.year}
-                onChange={handleChange}
-              />
-              <Label>Year</Label>
-            </FormGroup>
-            <FormGroup>
-              <Input
-                id='genre'
-                type='text'
-                value={inputs.genre || ''}
-                placeholder={movie.genre}
-                onChange={handleChange}
-              />
-              <Label>Genre</Label>
-            </FormGroup>
-            <FormGroup>
-              <Input
-                id='limit'
-                type='text'
-                value={inputs.limit || ''}
-                placeholder={movie.limit}
-                onChange={handleChange}
-              />
-              <Label>Limit</Label>
-            </FormGroup>
-            <FormGroup>
               {imgPerc > 0 ? (
                 <Line
                   percent={imgPerc}
