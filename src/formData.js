@@ -53,7 +53,7 @@ export const updateUserInputs = [
   },
 ];
 
-export const updateMovieInputs = [
+export const movieInputs = [
   {
     id: 'title',
     type: 'text',
@@ -98,7 +98,7 @@ export const updateMovieInputs = [
   },
 ];
 
-export const movieInputs = [
+export const updateMovieInputs = [
   {
     id: 'title',
     type: 'text',
