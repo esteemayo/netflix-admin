@@ -11,6 +11,8 @@ import {
 import { useSelector } from 'react-redux';
 
 const Chart = ({ title, data, dataKey, grid }) => {
+  const { darkMode } = useSelector((state) => state.darkMode);
+
   return (
     <Container>
       <Title>{title}</Title>
