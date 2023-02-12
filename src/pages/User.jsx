@@ -11,8 +11,8 @@ import {
 } from '@material-ui/icons';
 
 import { phone } from 'responsive';
-import { fetchUser, reset, updateUser } from 'redux/user/userSlice';
 import { updateUserInputs } from 'formData';
+import { fetchUser, reset, updateUser } from 'redux/user/userSlice';
 
 const initialState = {
   role: '',
