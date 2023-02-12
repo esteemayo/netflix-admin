@@ -8,6 +8,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
+import { useSelector } from 'react-redux';
 
 const Chart = ({ title, data, dataKey, grid }) => {
   return (
