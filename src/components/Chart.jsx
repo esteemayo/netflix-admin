@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import {
+  AreaChart,
+  Area,
   LineChart,
   Line,
   XAxis,
@@ -14,6 +16,38 @@ const Chart = ({ title, data, dataKey, grid }) => {
     <Container>
       <Title>{title}</Title>
       <ResponsiveContainer width='100%' aspect={4 / 1}>
+        <AreaChart
+          width={730}
+          height={250}
+          data={data}
+          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+        >
+          <defs>
+            <linearGradient id='total' x1='0' y1='0' x2='0' y2='1'>
+              <stop offset='5%' stopColor='#8884d8' stopOpacity={0.8} />
+              <stop offset='95%' stopColor='#8884d8' stopOpacity={0} />
+            </linearGradient>
+          </defs>
+          <XAxis dataKey='name' stroke='gray' />
+          {grid && (
+            <CartesianGrid
+              stroke='#8884d8'
+              strokeDasharray='3 3'
+              className='chart-grid'
+            />
+          )}
+          <Tooltip />
+          <Area
+            type='monotone'
+            dataKey={dataKey}
+            stroke='#8884d8'
+            fillOpacity={1}
+            fill='url(#total)'
+          />
+          <Legend />
+        </AreaChart>
+      </ResponsiveContainer>
+      {/* <ResponsiveContainer width='100%' aspect={4 / 1}>
         <LineChart data={data}>
           <XAxis dataKey='name' stroke='#8884d8' />
           <Line type='monotone' dataKey={dataKey} stroke='#8884d8' />
@@ -27,7 +61,7 @@ const Chart = ({ title, data, dataKey, grid }) => {
           )}
           <Legend />
         </LineChart>
-      </ResponsiveContainer>
+      </ResponsiveContainer> */}
     </Container>
   );
 };
