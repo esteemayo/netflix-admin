@@ -78,7 +78,7 @@ export const movieInputs = [
   {
     id: 'genre',
     type: 'text',
-    name: 'year',
+    name: 'genre',
     label: 'Genre',
     placeholder: 'Genre',
   },
