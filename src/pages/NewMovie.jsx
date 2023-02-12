@@ -150,6 +150,7 @@ const NewMovie = () => {
             type='file'
             id='trailer'
             name='trailer'
+            accept='video/*'
             onChange={(e) => setTrailer(e.target.files[0])}
           />
         </FormGroup>
