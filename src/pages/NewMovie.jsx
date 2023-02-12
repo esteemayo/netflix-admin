@@ -105,51 +105,6 @@ const NewMovie = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Label>Description</Label>
-          <Input
-            type='text'
-            name='desc'
-            placeholder='Description'
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label>Year</Label>
-          <Input
-            type='text'
-            name='year'
-            placeholder='Year'
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label>Genre</Label>
-          <Input
-            type='text'
-            name='genre'
-            placeholder='Genre'
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label>Duration</Label>
-          <Input
-            type='text'
-            name='duration'
-            placeholder='Duration'
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label>Limit</Label>
-          <Input
-            type='number'
-            name='limit'
-            placeholder='Limit'
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
           <Label>Is Series?</Label>
           <Select name='isSeries' id='isSeries' onChange={handleChange}>
             <Option value='false'>No</Option>
