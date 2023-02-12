@@ -420,6 +420,7 @@ const InfoItem = styled.div`
 `;
 
 const InfoKey = styled.span`
+  text-transform: ${({ type }) => type === 'id' ? 'uppercase' : 'capitalize'};
 `;
 
 const InfoValue = styled.span`
