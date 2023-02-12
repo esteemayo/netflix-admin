@@ -104,6 +104,7 @@ const User = () => {
           <Form onSubmit={handleSubmit}>
             <Left>
               {updateUserInputs.map((input) => {
+                const { id, name, type, label } = input;
                 return (
                   <FormGroup>
                     <FormInput
