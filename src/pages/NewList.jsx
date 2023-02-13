@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { createList } from 'redux/list/listSlice';
 import { fetchMovies } from 'redux/movie/movieSlice';
+import { listInputs } from 'formData';
 
 const NewList = () => {
   const dispatch = useDispatch();
