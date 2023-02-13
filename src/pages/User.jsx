@@ -46,7 +46,6 @@ const User = () => {
 
   useEffect(() => {
     dispatch(fetchUser(id));
-
     return () => {
       dispatch(reset());
     };
