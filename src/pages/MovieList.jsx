@@ -5,7 +5,7 @@ import { DataGrid } from '@material-ui/data-grid';
 import { DeleteOutline } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchMovies, removeMovie } from 'redux/movie/movieSlice';
+import { fetchMovies, removeMovie, reset } from 'redux/movie/movieSlice';
 
 const MovieList = ({ columns }) => {
   const dispatch = useDispatch();
