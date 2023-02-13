@@ -84,6 +84,9 @@ const initialState = {
 export const movieSlice = createSlice({
   name: 'movies',
   initialState,
+  reducers: {
+    reset: (state) => initialState,
+  },
   extraReducers: {
     [fetchMovies.pending]: (state) => {
       state.isFetching = true;
@@ -164,5 +167,7 @@ export const movieSlice = createSlice({
     },
   },
 });
+
+export const { reset } = movieSlice.actions;
 
 export default movieSlice.reducer;
