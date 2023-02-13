@@ -80,7 +80,6 @@ const NewUser = () => {
   }, [file]);
 
   useEffect(() => {
-    console.count('useEffect')
     error && toast.error(error);
 
     return () => {
