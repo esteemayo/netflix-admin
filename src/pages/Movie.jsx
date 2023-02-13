@@ -143,7 +143,11 @@ const Movie = () => {
 
   useEffect(() => {
     error && toast.error(error);
-  }, [error]);
+
+    return () => {
+      dispatch(reset);
+    }
+  }, [error, dispatch]);
 
   return (
     <Container>
