@@ -18,7 +18,7 @@ const List = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { state: list } = useLocation();
-  const { error, isSuccess } = useSelector((state) => state.lists);
+  const { error, isSuccess, isFetching } = useSelector((state) => state.lists);
 
   const [data, setData] = useState(initialState);
 
