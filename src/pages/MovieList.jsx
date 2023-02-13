@@ -13,7 +13,7 @@ const MovieList = ({ columns }) => {
   const { darkMode } = useSelector((state) => state.darkMode);
 
   const handleDelete = (id) => {
-    if (window.confirm('Are you sure you wanted to delete this movie'))
+    if (window.confirm('Are you sure you wanted to delete this movie?'))
       dispatch(removeMovie(id));
   };
 
