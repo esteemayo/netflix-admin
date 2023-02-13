@@ -49,15 +49,19 @@ const NewList = () => {
       <Title>New List</Title>
       <Form onSubmit={handleSubmit}>
         <Left>
-          <FormGroup>
-            <Label>Title</Label>
-            <Input
-              type='text'
-              name='title'
-              placeholder='Popular Movies'
-              onChange={handleChange}
-            />
-          </FormGroup>
+          {listInputs.map((input) => {
+            return (
+              <FormGroup>
+                <Label>Title</Label>
+                <Input
+                  type='text'
+                  name='title'
+                  placeholder='Popular Movies'
+                  onChange={handleChange}
+                />
+              </FormGroup>
+            );
+          })}
           <FormGroup>
             <Label>Type</Label>
             <Select name='type' id='type' onChange={handleChange}>
