@@ -50,6 +50,7 @@ const NewList = () => {
       <Form onSubmit={handleSubmit}>
         <Left>
           {listInputs.map((input) => {
+            const { id, name, type, label, placeholder } = input;
             return (
               <FormGroup>
                 <Label>Title</Label>
