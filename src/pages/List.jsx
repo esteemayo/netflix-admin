@@ -18,7 +18,7 @@ const List = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { state: list } = useLocation();
-  const { error } = useSelector((state) => state.lists);
+  const { error, isSuccess } = useSelector((state) => state.lists);
 
   const [data, setData] = useState(initialState);
 
@@ -33,7 +33,7 @@ const List = () => {
     e.preventDefault();
 
     dispatch(updateList(listId, data));
-    navigate(-1);
+    isSuccess && navigate(-1);
   };
 
   useEffect(() => {
