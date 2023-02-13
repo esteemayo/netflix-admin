@@ -80,8 +80,13 @@ const NewUser = () => {
   }, [file]);
 
   useEffect(() => {
+    console.count('useEffect')
     error && toast.error(error);
-    dispatch(reset());
+
+    return () => {
+      console.count('cleanup function')
+      dispatch(reset());
+    }
   }, [dispatch, error]);
 
   return (
