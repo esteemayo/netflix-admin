@@ -75,16 +75,20 @@ const List = () => {
       <Bottom>
         <Form onSubmit={handleSubmit}>
           <FormLeft>
-            <FormGroup>
-              <Input
-                id='title'
-                type='text'
-                value={title || ''}
-                placeholder={list.title}
-                onChange={handleChange}
-              />
-              <Label htmlFor='title'>List title</Label>
-            </FormGroup>
+            {updateListInputs.map((input) => {
+              return (
+                <FormGroup>
+                  <Input
+                    id='title'
+                    type='text'
+                    value={title || ''}
+                    placeholder={list.title}
+                    onChange={handleChange}
+                  />
+                  <Label htmlFor='title'>List title</Label>
+                </FormGroup>
+              );
+            })}
           </FormLeft>
           <FormRight>
             <Button>Update</Button>
