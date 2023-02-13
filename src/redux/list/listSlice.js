@@ -60,6 +60,9 @@ const initialState = {
 export const listSlice = createSlice({
   name: 'lists',
   initialState,
+  reducers: {
+    reset: (state) => initialState,
+  },
   extraReducers: {
     [fetchLists.pending]: (state) => {
       state.isFetching = true;
@@ -120,5 +123,7 @@ export const listSlice = createSlice({
     },
   },
 });
+
+export const { reset } = listSlice.actions;
 
 export default listSlice.reducer;
