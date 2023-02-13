@@ -81,7 +81,6 @@ const NewUser = () => {
 
   useEffect(() => {
     error && toast.error(error);
-
     return () => {
       dispatch(reset());
     };
