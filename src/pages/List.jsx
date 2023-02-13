@@ -18,6 +18,7 @@ const List = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { state: list } = useLocation();
+  const { error } = useSelector((state) => state.lists);
 
   const [data, setData] = useState(initialState);
 
@@ -42,6 +43,10 @@ const List = () => {
       genre: list.genre,
     });
   }, [list]);
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
 
   return (
     <Container>
