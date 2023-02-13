@@ -5,7 +5,7 @@ import { DataGrid } from '@material-ui/data-grid';
 import { DeleteOutline } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchLists, removeList } from 'redux/list/listSlice';
+import { fetchLists, removeList, reset } from 'redux/list/listSlice';
 
 const Lists = ({ columns }) => {
   const dispatch = useDispatch();
