@@ -84,7 +84,7 @@ const NewUser = () => {
 
     return () => {
       dispatch(reset());
-    }
+    };
   }, [dispatch, error]);
 
   return (
