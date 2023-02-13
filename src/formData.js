@@ -129,12 +129,14 @@ export const listInputs = [
   {
     id: 'title',
     type: 'text',
+    name: 'title',
     label: 'Title',
     placeholder: 'Popular Movies',
   },
   {
     id: 'genre',
     type: 'text',
+    name: 'genre',
     label: 'Genre',
     placeholder: 'Genre',
   },
