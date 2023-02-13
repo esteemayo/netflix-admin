@@ -78,15 +78,15 @@ const List = () => {
             {updateListInputs.map((input) => {
               const { id, type, label } = input;
               return (
-                <FormGroup>
+                <FormGroup key={id}>
                   <Input
-                    id='title'
-                    type='text'
-                    value={title || ''}
-                    placeholder={list.title}
+                    id={id}
+                    type={type}
+                    value={data[id] || ''}
+                    placeholder={list[id]}
                     onChange={handleChange}
                   />
-                  <Label htmlFor='title'>List title</Label>
+                  <Label htmlFor='title'>{label}</Label>
                 </FormGroup>
               );
             })}
