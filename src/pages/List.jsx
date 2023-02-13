@@ -84,26 +84,6 @@ const List = () => {
               />
               <Label htmlFor='title'>List title</Label>
             </FormGroup>
-            <FormGroup>
-              <Input
-                id='type'
-                type='text'
-                value={type || ''}
-                placeholder={list.type}
-                onChange={handleChange}
-              />
-              <Label htmlFor='type'>Type</Label>
-            </FormGroup>
-            <FormGroup>
-              <Input
-                id='genre'
-                type='text'
-                value={genre || ''}
-                placeholder={list.genre}
-                onChange={handleChange}
-              />
-              <Label htmlFor='genre'>Genre</Label>
-            </FormGroup>
           </FormLeft>
           <FormRight>
             <Button>Update</Button>
