@@ -16,7 +16,7 @@ import { createMovie } from 'redux/movie/movieSlice';
 const NewMovie = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isSuccess, isFetching } = useSelector((state) => state.movies);
+  const { error, isSuccess, isFetching } = useSelector((state) => state.movies);
 
   const [img, setImg] = useState(null);
   const [imgSm, setImgSm] = useState(null);
