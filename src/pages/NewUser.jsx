@@ -42,7 +42,6 @@ const NewUser = () => {
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log('Upload is ' + progress + '% done');
         setPer(Math.round(progress));
         switch (snapshot.state) {
           case 'paused':
