@@ -45,8 +45,13 @@ const User = () => {
   };
 
   useEffect(() => {
+    console.count('useEffect User')
     dispatch(fetchUser(id));
-    dispatch(reset());
+
+    return () => {
+      console.count('clean up function')
+      dispatch(reset());
+    }
   }, [dispatch, id]);
 
   useEffect(() => {
