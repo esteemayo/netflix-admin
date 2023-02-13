@@ -63,18 +63,20 @@ const List = () => {
             <MovieTitle>{list.title}</MovieTitle>
           </InfoTop>
           <InfoBottom>
-            <InfoItem>
-              <InfoKey>id:</InfoKey>
-              <InfoValue>{listId}</InfoValue>
-            </InfoItem>
-            <InfoItem>
-              <InfoKey>genre:</InfoKey>
-              <InfoValue>{list.genre}</InfoValue>
-            </InfoItem>
-            <InfoItem>
-              <InfoKey>type:</InfoKey>
-              <InfoValue>{list.type}</InfoValue>
-            </InfoItem>
+            <InfoBottonWrapper>
+              <InfoItem>
+                <InfoKey>id:</InfoKey>
+                <InfoValue>{listId}</InfoValue>
+              </InfoItem>
+              <InfoItem>
+                <InfoKey>genre:</InfoKey>
+                <InfoValue>{list.genre}</InfoValue>
+              </InfoItem>
+              <InfoItem>
+                <InfoKey>type:</InfoKey>
+                <InfoValue>{list.type}</InfoValue>
+              </InfoItem>
+            </InfoBottonWrapper>
           </InfoBottom>
         </TopRight>
       </Top>
