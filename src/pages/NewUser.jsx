@@ -28,6 +28,41 @@ const NewUser = () => {
     setInputs((prev) => ({ ...prev, [name]: value }));
   };
 
+  const uploadFile = (file) => {
+    const fileName = `${new Date().getTime()}-${file.name}`;
+
+    const storage = getStorage(app);
+    const storageRef = ref(storage, `/users/${fileName}`);
+
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+        switch (snapshot.state) {
+          case 'paused':
+            console.log('Upload is paused');
+            break;
+          case 'running':
+            console.log('Upload is running');
+            break;
+          default:
+        }
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setInputs((prev) => ({ ...prev, avatar: downloadURL }));
+        });
+      }
+    );
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
