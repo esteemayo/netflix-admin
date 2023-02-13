@@ -114,7 +114,7 @@ const NewUser = () => {
             <FormLabel htmlFor='file'>Avatar</FormLabel>
           </FormGroup>
         </FormContainer>
-        <Button disabled={isFetching}>Create</Button>
+        <Button disabled={isFetching || (per !== null && per < 100)}>Create</Button>
       </Form>
     </Container>
   );
