@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { listInputs } from 'formData';
-import { createList } from 'redux/list/listSlice';
+import { createList, reset } from 'redux/list/listSlice';
 import { fetchMovies } from 'redux/movie/movieSlice';
 
 const NewList = () => {
