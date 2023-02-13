@@ -58,15 +58,6 @@ const NewList = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Label>Genre</Label>
-            <Input
-              type='text'
-              name='genre'
-              placeholder='Genre'
-              onChange={handleChange}
-            />
-          </FormGroup>
-          <FormGroup>
             <Label>Type</Label>
             <Select name='type' id='type' onChange={handleChange}>
               <Option>Type</Option>
