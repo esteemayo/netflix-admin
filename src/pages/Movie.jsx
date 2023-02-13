@@ -15,7 +15,7 @@ import {
 import app from '../firebase';
 import { phone } from 'responsive';
 import { updateMovieInputs } from 'formData';
-import { updateMovie } from 'redux/movie/movieSlice';
+import { reset, updateMovie } from 'redux/movie/movieSlice';
 
 const initialState = {
   title: '',
