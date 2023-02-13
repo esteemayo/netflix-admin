@@ -76,6 +76,7 @@ const List = () => {
         <Form onSubmit={handleSubmit}>
           <FormLeft>
             {updateListInputs.map((input) => {
+              const { id, type, label } = input;
               return (
                 <FormGroup>
                   <Input
