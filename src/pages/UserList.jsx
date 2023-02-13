@@ -21,7 +21,6 @@ const UserList = ({ columns }) => {
 
   useEffect(() => {
     dispatch(fetchUsers());
-
     return () => {
       dispatch(reset());
     };
