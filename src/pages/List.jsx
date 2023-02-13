@@ -98,7 +98,7 @@ const List = () => {
             })}
           </FormLeft>
           <FormRight>
-            <Button>Update</Button>
+            <Button disabled={isFetching}>Update</Button>
           </FormRight>
         </Form>
       </Bottom>
