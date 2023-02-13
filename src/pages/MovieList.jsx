@@ -19,6 +19,10 @@ const MovieList = ({ columns }) => {
 
   useEffect(() => {
     dispatch(fetchMovies());
+
+    return () => {
+      dispatch(reset());
+    };
   }, [dispatch]);
 
   const actionColumn = [
