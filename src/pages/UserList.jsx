@@ -25,7 +25,7 @@ const UserList = ({ columns }) => {
 
     return () => {
       dispatch(reset());
-    }
+    };
   }, [dispatch]);
 
   const actionColumn = [
