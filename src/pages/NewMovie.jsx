@@ -93,6 +93,14 @@ const NewMovie = () => {
     isSuccess && navigate('/movies');
   };
 
+  useEffect(() => {
+    error && toast.error(error);
+
+    return () => {
+      dispatch(reset());
+    };
+  }, [error, dispatch]);
+
   return (
     <Container>
       <Title>New movie</Title>
