@@ -20,9 +20,9 @@ const NewUser = () => {
   const navigate = useNavigate();
   const { error, isFetching } = useSelector((state) => state.user);
 
+  const [per, setPer] = useState(null);
   const [file, setFile] = useState(null);
   const [inputs, setInputs] = useState(null);
-  const [per, setPer] = useState(null);
 
   const handleChange = ({ target: input }) => {
     const { name, value } = input;
