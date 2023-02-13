@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { listInputs } from 'formData';
 import { createList } from 'redux/list/listSlice';
 import { fetchMovies } from 'redux/movie/movieSlice';
-import { listInputs } from 'formData';
 
 const NewList = () => {
   const dispatch = useDispatch();
