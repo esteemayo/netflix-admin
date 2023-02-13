@@ -6,7 +6,7 @@ import { DataGrid } from '@material-ui/data-grid';
 import { DeleteOutline } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchUsers, removeUser } from 'redux/user/userSlice';
+import { fetchUsers, removeUser, reset } from 'redux/user/userSlice';
 
 const UserList = ({ columns }) => {
   const dispatch = useDispatch();
