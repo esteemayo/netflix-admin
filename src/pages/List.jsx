@@ -46,7 +46,10 @@ const List = () => {
 
   useEffect(() => {
     error && toast.error(error);
-    dispatch(reset());
+
+    return () => {
+      dispatch(reset());
+    };
   }, [error, dispatch]);
 
   return (
