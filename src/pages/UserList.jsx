@@ -20,7 +20,6 @@ const UserList = ({ columns }) => {
   };
 
   useEffect(() => {
-    console.count('useEffect')
     dispatch(fetchUsers());
 
     return () => {
