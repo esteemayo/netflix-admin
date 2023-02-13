@@ -49,7 +49,6 @@ const User = () => {
     dispatch(fetchUser(id));
 
     return () => {
-      console.count('clean up function')
       dispatch(reset());
     }
   }, [dispatch, id]);
