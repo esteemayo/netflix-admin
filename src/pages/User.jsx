@@ -49,7 +49,7 @@ const User = () => {
 
     return () => {
       dispatch(reset());
-    }
+    };
   }, [dispatch, id]);
 
   useEffect(() => {
