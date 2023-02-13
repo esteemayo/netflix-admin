@@ -75,6 +75,10 @@ const NewUser = () => {
   };
 
   useEffect(() => {
+    file && uploadFile(file);
+  }, [file]);
+
+  useEffect(() => {
     error && toast.error(error);
     dispatch(reset());
   }, [dispatch, error]);
