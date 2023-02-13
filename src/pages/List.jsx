@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { phone } from 'responsive';
 import { updateList } from 'redux/list/listSlice';
+import { updateListInputs } from 'formData';
 
 const initialState = {
   type: '',
