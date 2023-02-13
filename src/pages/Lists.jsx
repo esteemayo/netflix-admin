@@ -19,6 +19,10 @@ const Lists = ({ columns }) => {
 
   useEffect(() => {
     dispatch(fetchLists());
+
+    return () => {
+      dispatch(reset());
+    }
   }, [dispatch]);
 
   const actionColumn = [
