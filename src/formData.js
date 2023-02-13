@@ -124,3 +124,18 @@ export const updateMovieInputs = [
     placeholder: '',
   },
 ];
+
+export const listInputs = [
+  {
+    id: 'title',
+    type: 'text',
+    label: 'Title',
+    placeholder: 'Popular Movies',
+  },
+  {
+    id: 'genre',
+    type: 'text',
+    label: 'Genre',
+    placeholder: 'Genre',
+  },
+];
