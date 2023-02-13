@@ -22,7 +22,7 @@ const Lists = ({ columns }) => {
 
     return () => {
       dispatch(reset());
-    }
+    };
   }, [dispatch]);
 
   const actionColumn = [
