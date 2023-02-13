@@ -83,7 +83,6 @@ const NewUser = () => {
     error && toast.error(error);
 
     return () => {
-      console.count('cleanup function')
       dispatch(reset());
     }
   }, [dispatch, error]);
