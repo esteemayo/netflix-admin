@@ -15,7 +15,7 @@ const UserList = ({ columns }) => {
 
   const handleDelete = (id) => {
     const userId = id;
-    if (window.confirm('Are you sure you wanted to delete this user'))
+    if (window.confirm('Are you sure you wanted to delete this user?'))
       dispatch(removeUser({ userId, toast }));
   };
 
