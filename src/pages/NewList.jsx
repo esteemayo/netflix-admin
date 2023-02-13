@@ -76,9 +76,9 @@ const NewList = () => {
           <FormGroup>
             <Label>Content</Label>
             <Select
+              id='content'
               type='content'
               name='content'
-              id='content'
               multiple
               onChange={handleSelect}
             >
