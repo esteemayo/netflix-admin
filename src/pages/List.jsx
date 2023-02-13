@@ -192,7 +192,7 @@ const InfoItem = styled.div`
 `;
 
 const InfoKey = styled.span`
-  margin-right: 2rem;
+  text-transform: ${({ type }) => type === 'id' ? 'uppercase' : 'capitalize'};
 `;
 
 const InfoValue = styled.span`
