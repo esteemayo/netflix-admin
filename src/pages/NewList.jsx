@@ -38,6 +38,7 @@ const NewList = () => {
 
   useEffect(() => {
     dispatch(fetchMovies());
+    dispatch(reset());
   }, [dispatch]);
 
   useEffect(() => {
