@@ -46,7 +46,8 @@ const List = () => {
 
   useEffect(() => {
     error && toast.error(error);
-  }, [error]);
+    dispatch(reset());
+  }, [error, dispatch]);
 
   return (
     <Container>
