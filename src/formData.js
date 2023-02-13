@@ -139,3 +139,24 @@ export const listInputs = [
     placeholder: 'Genre',
   },
 ];
+
+export const updateListInputs = [
+  {
+    id: 'title',
+    type: 'text',
+    label: 'List title',
+    placeholder: '',
+  },
+  {
+    id: 'type',
+    type: 'text',
+    label: 'Type',
+    placeholder: '',
+  },
+  {
+    id: 'genre',
+    type: 'text',
+    label: 'Genre',
+    placeholder: '',
+  },
+];
