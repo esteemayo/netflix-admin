@@ -12,7 +12,7 @@ import {
 
 import app from '../firebase';
 import { movieInputs } from 'formData';
-import { createMovie } from 'redux/movie/movieSlice';
+import { createMovie, reset } from 'redux/movie/movieSlice';
 
 const NewMovie = () => {
   const dispatch = useDispatch();
