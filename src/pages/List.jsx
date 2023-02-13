@@ -172,7 +172,6 @@ const InfoTop = styled.div`
 const MovieTitle = styled.span`
   text-transform: capitalize;
   font-weight: 600;
-  margin-left: 2rem;
 `;
 
 const InfoBottom = styled.div`
