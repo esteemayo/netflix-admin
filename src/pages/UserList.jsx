@@ -20,7 +20,12 @@ const UserList = ({ columns }) => {
   };
 
   useEffect(() => {
+    console.count('useEffect')
     dispatch(fetchUsers());
+
+    return () => {
+      dispatch(reset());
+    }
   }, [dispatch]);
 
   const actionColumn = [
