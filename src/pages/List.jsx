@@ -21,7 +21,6 @@ const List = () => {
   const [data, setData] = useState(initialState);
 
   const listId = list?._id;
-  const { type, title, genre } = data;
 
   const handleChange = ({ target: input }) => {
     const { id, value } = input;
