@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -54,7 +54,7 @@ const Login = () => {
                   name={name}
                   placeholder={placeholder}
                   required
-                  ref={usernameRef}
+                  autoFocus={name === 'username' ? true : false}
                   onChange={handleChange}
                 />
                 <FormLabel>{label}</FormLabel>
