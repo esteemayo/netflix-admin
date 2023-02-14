@@ -35,9 +35,10 @@ const Home = () => {
   useEffect(() => {
     (async () => {
       try {
+        const { token } = axios.CancelToken.source();
         const {
           data: { stats },
-        } = await getUsersStats();
+        } = await getUsersStats(token);
 
         // const statsList = stats.sort((a, b) => (a._id - b._id));
 
@@ -48,7 +49,12 @@ const Home = () => {
           ])
         );
       } catch (err) {
-        console.log(err);
+        if (axios.isCancel(err)) {
+          console.log('cancelled');
+        } else {
+          // TODO: handle error
+          console.log(err);
+        }
       }
     })();
   }, [MONTHS]);
