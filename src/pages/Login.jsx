@@ -7,6 +7,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { loginInputs } from 'formData';
 import { loginUser, reset } from 'redux/user/userSlice';
 
+const initialState = {
+  username: '',
+  password: '',
+};
+
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
