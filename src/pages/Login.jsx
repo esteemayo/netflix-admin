@@ -46,17 +46,21 @@ const Login = () => {
       <Wrapper>
         <Title>Login</Title>
         <Form onSubmit={handleSubmit}>
-          <FormGroup>
-            <FormInput
-              type='text'
-              name='username'
-              placeholder='Username'
-              required
-              ref={usernameRef}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <FormLabel>Username</FormLabel>
-          </FormGroup>
+          {loginInputs.map((input) => {
+            return (
+              <FormGroup>
+                <FormInput
+                  type='text'
+                  name='username'
+                  placeholder='Username'
+                  required
+                  ref={usernameRef}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+                <FormLabel>Username</FormLabel>
+              </FormGroup>
+            );
+          })}
           {error && <ErrorMessage>{error}</ErrorMessage>}
           <Button disabled={isFetching}>Login</Button>
         </Form>
