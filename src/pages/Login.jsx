@@ -23,6 +23,11 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const { currentUser, error, isSuccess, isFetching } = useSelector((state) => state.user);
 
+  const handleChange = ({ target: input }) => {
+    const { name, value } = input;
+    setData((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
