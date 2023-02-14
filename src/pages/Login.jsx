@@ -56,16 +56,6 @@ const Login = () => {
             />
             <FormLabel>Username</FormLabel>
           </FormGroup>
-          <FormGroup>
-            <FormInput
-              type='password'
-              name='password'
-              placeholder='Password'
-              required
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <FormLabel>Password</FormLabel>
-          </FormGroup>
           {error && <ErrorMessage>{error}</ErrorMessage>}
           <Button disabled={isFetching}>Login</Button>
         </Form>
