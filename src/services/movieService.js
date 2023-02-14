@@ -2,7 +2,7 @@ import http from './httpService';
 
 const apiEndpoint = '/movies';
 
-const movieUrl = (id) => `${apiEndpoint}/${id}`;
+const movieUrl = (movieId) => `${apiEndpoint}/${movieId}`;
 
 export const getMovies = () => http.get(apiEndpoint);
 
