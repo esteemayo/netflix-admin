@@ -14,10 +14,10 @@ const WidgetSm = () => {
   useEffect(() => {
     (async () => {
       try {
-        const cancelToken = axios.CancelToken.source();
+        const { token } = axios.CancelToken.source();
         const {
           data: { users },
-        } = await getUsers(cancelToken);
+        } = await getUsers(token);
 
         setUsers(users);
       } catch (err) {
