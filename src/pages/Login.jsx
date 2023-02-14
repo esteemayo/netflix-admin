@@ -19,8 +19,6 @@ const Login = () => {
 
   const usernameRef = useRef();
   const [data, setData] = useState(initialState);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const { currentUser, error, isSuccess, isFetching } = useSelector((state) => state.user);
 
   const handleChange = ({ target: input }) => {
