@@ -47,6 +47,7 @@ const Login = () => {
         <Title>Login</Title>
         <Form onSubmit={handleSubmit}>
           {loginInputs.map((input) => {
+            const { id, name, type, label, placeholder } = input;
             return (
               <FormGroup>
                 <FormInput
