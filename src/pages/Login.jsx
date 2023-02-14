@@ -29,12 +29,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const userData = {
-      username,
-      password,
-    };
-
-    dispatch(loginUser({ credentials: userData, toast }));
+    dispatch(loginUser({ credentials: data, toast }));
 
     const origin = location.state?.from?.pathname || '/';
     currentUser && isSuccess && navigate(origin);
