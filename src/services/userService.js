@@ -6,8 +6,8 @@ const userUrl = (userId) => `${apiEndpoint}/${userId}`;
 
 export const getAllUsers = () => http.get(apiEndpoint);
 
-export const getUsers = (cancelToken) =>
-  http.get(`${apiEndpoint}?new=true`, { cancelToken: cancelToken.token });
+export const getUsers = (token) =>
+  http.get(`${apiEndpoint}?new=true`, { cancelToken: token });
 
 export const getUsersStats = (token) =>
   http.get(`${apiEndpoint}/stats`, { cancelToken: token });
