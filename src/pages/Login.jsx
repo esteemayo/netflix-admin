@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { loginUser, reset } from 'redux/user/userSlice';
+import { loginInputs } from 'formData';
 
 const Login = () => {
   const dispatch = useDispatch();
