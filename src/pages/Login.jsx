@@ -67,7 +67,7 @@ const Login = () => {
                   placeholder={placeholder}
                   required
                   ref={usernameRef}
-                  onChange={(e) => name === 'username' ? setUsername(e.target.value) : setPassword(e.target.value)}
+                  onChange={handleChange}
                 />
                 <FormLabel>{label}</FormLabel>
               </FormGroup>
