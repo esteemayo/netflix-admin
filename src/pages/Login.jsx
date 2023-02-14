@@ -49,16 +49,16 @@ const Login = () => {
           {loginInputs.map((input) => {
             const { id, name, type, label, placeholder } = input;
             return (
-              <FormGroup>
+              <FormGroup key={id}>
                 <FormInput
-                  type='text'
-                  name='username'
-                  placeholder='Username'
+                  type={type}
+                  name={name}
+                  placeholder={placeholder}
                   required
                   ref={usernameRef}
                   onChange={(e) => setUsername(e.target.value)}
                 />
-                <FormLabel>Username</FormLabel>
+                <FormLabel>{label}</FormLabel>
               </FormGroup>
             );
           })}
