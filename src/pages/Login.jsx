@@ -17,7 +17,6 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const usernameRef = useRef();
   const [data, setData] = useState(initialState);
   const { currentUser, error, isSuccess, isFetching } = useSelector((state) => state.user);
 
