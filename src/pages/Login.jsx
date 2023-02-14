@@ -41,10 +41,6 @@ const Login = () => {
     };
   }, [dispatch]);
 
-  useEffect(() => {
-    usernameRef.current.focus();
-  }, []);
-
   return (
     <Container>
       <Wrapper>
