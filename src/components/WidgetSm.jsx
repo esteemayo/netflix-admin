@@ -1,3 +1,4 @@
+import axios from 'axios';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
