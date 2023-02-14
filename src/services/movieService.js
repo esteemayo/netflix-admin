@@ -14,6 +14,6 @@ export const getMovieBySlug = (slug) =>
 
 export const createMovie = (movie) => http.post(apiEndpoint, movie);
 
-export const editMovie = (id, movie) => http.patch(movieUrl(id), movie);
+export const editMovie = (movieId, movie) => http.patch(movieUrl(movieId), movie);
 
 export const deleteMovie = (id) => http.delete(movieUrl(id));
