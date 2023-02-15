@@ -69,7 +69,7 @@ const List = () => {
             <InfoBottonWrapper>
               <InfoItem>
                 <InfoKey type='id'>id:</InfoKey>
-                <InfoValue>{listId}</InfoValue>
+                <InfoValue type='id'>{listId}</InfoValue>
               </InfoItem>
               <InfoItem>
                 <InfoKey>genre:</InfoKey>
