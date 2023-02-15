@@ -4,8 +4,8 @@ import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { phone } from 'responsive';
 import { updateListInputs } from 'formData';
+import { phone } from 'responsive';
 import { reset, updateList } from 'redux/list/listSlice';
 
 const initialState = {
