@@ -64,9 +64,9 @@ const Login = () => {
                 <FormLabel>{label}</FormLabel>
                 {type === 'password' && (
                   showPassword ? (
-                    <VisibilityOff />
+                    <VisibilityOff className='password__icon' />
                   ) : (
-                    <Visibility />
+                    <Visibility className='password__icon' />
                   )
                 )}
               </FormGroup>
