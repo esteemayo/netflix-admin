@@ -6,8 +6,8 @@ const movieUrl = (movieId) => `${apiEndpoint}/${movieId}`;
 
 export const getMovies = () => http.get(apiEndpoint);
 
-export const getMovieById = (id) =>
-  http.get(`${apiEndpoint}/find/${id}`);
+export const getMovieById = (movieId) =>
+  http.get(`${apiEndpoint}/find/${movieId}`);
 
 export const getMovieBySlug = (slug) =>
   http.get(`${apiEndpoint}/details/${slug}`);
