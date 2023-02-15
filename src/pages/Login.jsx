@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility';
+import FaceOutlinedIcon from '@mui/icons-material/FaceOutlined';
 
 import { loginInputs } from 'formData';
 import { loginUser, reset } from 'redux/user/userSlice';
