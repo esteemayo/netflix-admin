@@ -62,6 +62,11 @@ const Login = () => {
                   onChange={handleChange}
                 />
                 <FormLabel>{label}</FormLabel>
+                {showPassword && type === 'password' ? (
+                  <VisibilityOff />
+                ) : (
+                  <Visibility />
+                )}
               </FormGroup>
             );
           })}
