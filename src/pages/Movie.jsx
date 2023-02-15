@@ -12,10 +12,10 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 
-import app from '../firebase';
 import { phone } from 'responsive';
-import { updateMovieInputs } from 'formData';
+import app from '../firebase';
 import { reset, updateMovie } from 'redux/movie/movieSlice';
+import { updateMovieInputs } from 'formData';
 
 const initialState = {
   title: '',
