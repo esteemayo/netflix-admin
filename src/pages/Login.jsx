@@ -22,6 +22,8 @@ const Login = () => {
   const [data, setData] = useState(initialState);
   const { currentUser, error, isSuccess, isFetching } = useSelector((state) => state.user);
 
+  const { showPassword } = data;
+
   const handleChange = ({ target: input }) => {
     const { name, value } = input;
     setData((prev) => ({ ...prev, [name]: value }));
