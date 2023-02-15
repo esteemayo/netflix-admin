@@ -62,7 +62,9 @@ const Login = () => {
             );
           })}
           {error && <ErrorMessage>{error}</ErrorMessage>}
-          <Button disabled={isFetching}>{isFetching ? 'Processing...' : 'Login'}</Button>
+          <Button disabled={isFetching}>
+            {isFetching ? 'Processing...' : 'Login'}
+          </Button>
         </Form>
       </Wrapper>
     </Container>
