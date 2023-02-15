@@ -68,7 +68,9 @@ const Login = () => {
                   onChange={handleChange}
                 />
                 <FormLabel>{label}</FormLabel>
-                {type === 'password' && (
+                {name === 'username' ? (
+                  <FaceOutlinedIcon />
+                ) : (
                   showPassword ? (
                     <VisibilityOff onClick={handleToggle} className='password__icon' />
                   ) : (
