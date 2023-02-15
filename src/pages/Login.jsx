@@ -72,7 +72,10 @@ const Login = () => {
                   <FaceOutlinedIcon className='username__icon' />
                 ) : (
                   showPassword ? (
-                    <VisibilityOff onClick={handleToggle} className='password__icon' />
+                    <VisibilityOff
+                      onClick={handleToggle}
+                      className='password__icon'
+                    />
                   ) : (
                     <Visibility onClick={handleToggle} className='password__icon' />
                   )
