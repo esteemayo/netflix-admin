@@ -62,10 +62,12 @@ const Login = () => {
                   onChange={handleChange}
                 />
                 <FormLabel>{label}</FormLabel>
-                {showPassword && type === 'password' ? (
-                  <VisibilityOff />
-                ) : (
-                  <Visibility />
+                {type === 'password' && (
+                  showPassword ? (
+                    <VisibilityOff />
+                  ) : (
+                    <Visibility />
+                  )
                 )}
               </FormGroup>
             );
