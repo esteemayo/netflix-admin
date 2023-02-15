@@ -126,6 +126,6 @@ input[type='file'] {
 .password__icon {
   font-size: 2rem !important;
   position: absolute;
-  top: 1.25rem;
+  top: 1rem;
   right: 2rem;
 }
