@@ -126,6 +126,9 @@ input[type='file'] {
 .username__icon {
   font-size: 2rem !important;
   position: absolute;
+  top: 1rem;
+  right: 2rem;
+  cursor: pointer;
 }
 
 .password__icon {
