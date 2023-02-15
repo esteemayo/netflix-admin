@@ -10,10 +10,10 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 
-import app from '../firebase';
 import { phone } from 'responsive';
-import { userInputs } from 'formData';
+import app from '../firebase';
 import { registerUser, reset } from 'redux/user/userSlice';
+import { userInputs } from 'formData';
 
 const NewUser = () => {
   const dispatch = useDispatch();
