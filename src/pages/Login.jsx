@@ -29,6 +29,10 @@ const Login = () => {
     setData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleToggle = () => {
+    setData((prev) => ({ ...prev, showPassword: !prev.showPassword }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
