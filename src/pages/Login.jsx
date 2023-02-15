@@ -144,6 +144,7 @@ const FormInput = styled.input`
   box-shadow: 0 1rem 2rem rgba(00, 00, 00, 0.1);
   caret-color: ${({ theme }) => theme.crInput};
   transition: all 0.5s ease;
+  z-index: 20;
 
   &:focus {
     outline: none;
