@@ -158,7 +158,7 @@ const NewMovie = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Label>Trailer</Label>
+          <Label htmlFor='trailer'>Trailer</Label>
           <Input
             type='file'
             id='trailer'
