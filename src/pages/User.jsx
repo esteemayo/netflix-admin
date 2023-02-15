@@ -10,8 +10,8 @@ import {
   Publish,
 } from '@material-ui/icons';
 
-import { phone } from 'responsive';
 import { updateUserInputs } from 'formData';
+import { phone } from 'responsive';
 import { fetchUser, reset, updateUser } from 'redux/user/userSlice';
 
 const initialState = {
