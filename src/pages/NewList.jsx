@@ -169,6 +169,7 @@ const Input = styled.input`
 const Select = styled.select`
   display: block;
   padding: 1rem 2rem;
+  padding-left: 1rem;
   font-size: 1.2rem;
   font-family: inherit;
   background-color: transparent;
