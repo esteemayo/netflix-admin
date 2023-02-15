@@ -69,7 +69,7 @@ const Login = () => {
                 />
                 <FormLabel>{label}</FormLabel>
                 {name === 'username' ? (
-                  <FaceOutlinedIcon />
+                  <FaceOutlinedIcon className='username__icon' />
                 ) : (
                   showPassword ? (
                     <VisibilityOff onClick={handleToggle} className='password__icon' />
