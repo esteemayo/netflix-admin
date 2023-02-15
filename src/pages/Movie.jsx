@@ -167,7 +167,7 @@ const Movie = () => {
             <InfoBottonWrapper>
               <InfoItem>
                 <InfoKey type='id'>id:</InfoKey>
-                <InfoValue>{movieId}</InfoValue>
+                <InfoValue type='id'>{movieId}</InfoValue>
               </InfoItem>
               <InfoItem>
                 <InfoKey>genre:</InfoKey>
