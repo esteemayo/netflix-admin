@@ -15,20 +15,25 @@ const WidgetLg = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableDataUser>
-              <Image
-                src='https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-                alt=''
-              />
-              <UserName>Susan carol</UserName>
-            </TableDataUser>
-            <TableDataDate>2 Jun 2021</TableDataDate>
-            <TableDataAmount>$122.00</TableDataAmount>
-            <TableDataStatus>
-              <Button type='approved'>Approved</Button>
-            </TableDataStatus>
-          </TableRow>
+          {transactions.map((transaction) => {
+            const { id, img, total, status, customer, createdAt } = transaction;
+            return (
+              <TableRow key={id}>
+                <TableDataUser>
+                  <Image
+                    src={img}
+                    alt=''
+                  />
+                  <UserName>{customer}</UserName>
+                </TableDataUser>
+                <TableDataDate>{createdAt}</TableDataDate>
+                <TableDataAmount>${total}</TableDataAmount>
+                <TableDataStatus>
+                  <Button type={status}>{status}</Button>
+                </TableDataStatus>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </Container>
