@@ -55,7 +55,17 @@ const FeaturedItem = ({ type }) => {
   }
 
   return (
-    <div>FeaturedItem</div>
+    <Container>
+      <Title>{data.title}</Title>
+      <FeaturedMoneyContainer>
+        <FeaturedMoney>${data.money}</FeaturedMoney>
+        <FeaturedMoneyRate>
+          ${data.rate}{' '}
+          {data.icon}{' '}
+        </FeaturedMoneyRate>
+      </FeaturedMoneyContainer>
+      <FeaturedSub>Compared to last month</FeaturedSub>
+    </Container>
   );
 };
 
