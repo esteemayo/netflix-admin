@@ -4,7 +4,9 @@ import FeaturedItem from './FeaturedItem';
 const FeaturedInfo = () => {
   return (
     <Container>
-      {/*  */}
+      <FeaturedItem type='revenue' />
+      <FeaturedItem type='sales' />
+      <FeaturedItem type='cost' />
     </Container>
   );
 };
