@@ -4,8 +4,8 @@ import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { listInputs } from 'formData';
 import { fetchMovies } from 'redux/movie/movieSlice';
+import { listInputs } from 'formData';
 import { createList, reset } from 'redux/list/listSlice';
 
 const NewList = () => {
