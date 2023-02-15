@@ -58,7 +58,7 @@ const Login = () => {
             return (
               <FormGroup key={id}>
                 <FormInput
-                  type={type}
+                  type={showPassword ? 'text' : type}
                   name={name}
                   placeholder={placeholder}
                   required
