@@ -124,4 +124,7 @@ input[type='file'] {
 }
 
 .password__icon {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
 }
