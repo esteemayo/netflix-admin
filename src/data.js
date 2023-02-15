@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const transactions = [
   {
+    id: 1,
     customer: 'Susan carol',
     img: 'https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     total: '122.00',
@@ -9,6 +10,7 @@ export const transactions = [
     createdAt: '2 Jun 2021',
   },
   {
+    id: 2,
     customer: 'Susan carol',
     img: 'https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     total: '122.00',
@@ -16,6 +18,7 @@ export const transactions = [
     createdAt: '2 Jun 2021',
   },
   {
+    id: 3,
     customer: 'Susan carol',
     img: 'https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     total: '122.00',
@@ -23,6 +26,7 @@ export const transactions = [
     createdAt: '2 Jun 2021',
   },
   {
+    id: 4,
     customer: 'Susan carol',
     img: 'https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     total: '122.00',
