@@ -79,7 +79,7 @@ const NewList = () => {
         </Left>
         <Right>
           <FormGroup>
-            <Label>Content</Label>
+            <Label htmlFor='content'>Content</Label>
             <Select
               id='content'
               type='content'
