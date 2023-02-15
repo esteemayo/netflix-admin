@@ -123,14 +123,7 @@ input[type='file'] {
   stroke: #606060;
 }
 
-.username__icon {
-  font-size: 2rem !important;
-  position: absolute;
-  top: 1rem;
-  right: 2rem;
-  cursor: pointer;
-}
-
+.username__icon,
 .password__icon {
   font-size: 2rem !important;
   position: absolute;
