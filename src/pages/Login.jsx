@@ -11,6 +11,7 @@ import { loginUser, reset } from 'redux/user/userSlice';
 const initialState = {
   username: '',
   password: '',
+  showPassword: false,
 };
 
 const Login = () => {
