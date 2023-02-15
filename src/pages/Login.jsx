@@ -5,7 +5,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility';
-// import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 import { loginInputs } from 'formData';
 import { loginUser, reset } from 'redux/user/userSlice';
