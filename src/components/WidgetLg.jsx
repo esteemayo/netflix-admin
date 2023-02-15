@@ -108,7 +108,7 @@ const Button = styled.button`
   border: none;
   display: block;
   padding: 0.5rem 0.7rem;
-  text-transform: capitalise;
+  text-transform: capitalize;
   border-radius: 1rem;
   background-color: ${(props) => props.type === 'approved' && props.theme.bgApproved};
   background-color: ${(props) => props.type === 'declined' && props.theme.bgDeclined};
