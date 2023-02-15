@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { phone } from 'responsive';
 import { updateListInputs } from 'formData';
