@@ -70,7 +70,7 @@ const Login = () => {
                   showPassword ? (
                     <VisibilityOff onClick={handleToggle} className='password__icon' />
                   ) : (
-                    <Visibility className='password__icon' />
+                    <Visibility onClick={handleToggle} className='password__icon' />
                   )
                 )}
               </FormGroup>
