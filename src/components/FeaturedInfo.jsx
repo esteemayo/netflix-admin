@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons';
+import FeaturedItem from './FeaturedItem';
 
 const FeaturedInfo = () => {
   return (
