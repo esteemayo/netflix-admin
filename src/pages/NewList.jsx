@@ -59,6 +59,7 @@ const NewList = () => {
               <FormGroup key={id}>
                 <Label htmlFor={id}>{label}</Label>
                 <Input
+                  id={id}
                   type={type}
                   name={name}
                   placeholder={placeholder}
