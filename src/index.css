@@ -129,5 +129,8 @@ input[type='file'] {
   position: absolute;
   top: 1rem;
   right: 2rem;
+}
+
+.password__icon {
   cursor: pointer;
 }
