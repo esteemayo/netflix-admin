@@ -57,7 +57,7 @@ const NewList = () => {
             const { id, name, type, label, placeholder } = input;
             return (
               <FormGroup key={id}>
-                <Label>{label}</Label>
+                <Label htmlFor={id}>{label}</Label>
                 <Input
                   type={type}
                   name={name}
