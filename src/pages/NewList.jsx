@@ -63,6 +63,7 @@ const NewList = () => {
                   type={type}
                   name={name}
                   placeholder={placeholder}
+                  autoFocus={name === 'title' ? true : false}
                   onChange={handleChange}
                 />
               </FormGroup>
