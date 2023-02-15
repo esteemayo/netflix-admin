@@ -121,7 +121,7 @@ const NewMovie = () => {
           );
         })}
         <FormGroup>
-          <Label>Is Series?</Label>
+          <Label htmlFor='isSeries'>Is Series?</Label>
           <Select name='isSeries' id='isSeries' onChange={handleChange}>
             <Option value='false'>No</Option>
             <Option value='true'>Yes</Option>
