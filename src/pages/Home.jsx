@@ -3,12 +3,12 @@ import axios from 'axios';
 import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { phone } from 'responsive';
 import Chart from 'components/Chart';
-import WidgetSm from 'components/WidgetSm';
-import WidgetLg from 'components/WidgetLg';
+import { phone } from 'responsive';
 import FeaturedInfo from 'components/FeaturedInfo';
+import WidgetSm from 'components/WidgetSm';
 import { getUsersStats } from 'services/userService';
+import WidgetLg from 'components/WidgetLg';
 
 const Home = () => {
   const [userStats, setUserStats] = useState([]);
