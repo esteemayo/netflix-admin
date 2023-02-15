@@ -69,7 +69,7 @@ const NewList = () => {
             );
           })}
           <FormGroup>
-            <Label>Type</Label>
+            <Label htmlFor='type'>Type</Label>
             <Select name='type' id='type' onChange={handleChange}>
               <Option>Type</Option>
               <Option value='movie'>Movie</Option>
