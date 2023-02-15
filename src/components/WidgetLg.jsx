@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { transactions } from 'data';
 
 const WidgetLg = () => {
   return (
