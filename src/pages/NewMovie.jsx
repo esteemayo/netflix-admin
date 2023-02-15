@@ -10,8 +10,8 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 
-import app from '../firebase';
 import { movieInputs } from 'formData';
+import app from '../firebase';
 import { createMovie, reset } from 'redux/movie/movieSlice';
 
 const NewMovie = () => {
