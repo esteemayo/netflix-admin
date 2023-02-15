@@ -128,7 +128,7 @@ const NewMovie = () => {
           </Select>
         </FormGroup>
         <FormGroup>
-          <Label>Image</Label>
+          <Label htmlFor='img'>Image</Label>
           <Input
             type='file'
             id='img'
