@@ -33,7 +33,7 @@ const WidgetSm = () => {
 
   return (
     <Container>
-      <Title>New join members</Title>
+      <Title>Latest members</Title>
       <List>
         {users.map((item) => {
           const { _id: id, avatar, username } = item;
