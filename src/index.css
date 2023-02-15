@@ -131,6 +131,10 @@ input[type='file'] {
   right: 2rem;
 }
 
+.username__icon {
+  z-index: 1;
+}
+
 .password__icon {
   cursor: pointer;
 }
