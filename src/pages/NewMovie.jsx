@@ -148,7 +148,7 @@ const NewMovie = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Label>Thumbnail image</Label>
+          <Label htmlFor='imgSm'>Thumbnail image</Label>
           <Input
             type='file'
             id='imgSm'
