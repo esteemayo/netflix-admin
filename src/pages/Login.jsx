@@ -23,6 +23,8 @@ const Login = () => {
   const { darkMode } = useSelector((state) => state.darkMode);
   const { currentUser, error, isSuccess, isFetching } = useSelector((state) => state.user);
 
+  const [data, setData] = useState(initialState);
+
   const { showPassword } = data;
 
   const handleChange = ({ target: input }) => {
