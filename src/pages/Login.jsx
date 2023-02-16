@@ -70,7 +70,9 @@ const Login = () => {
                 />
                 <FormLabel>{label}</FormLabel>
                 {name === 'username' ? (
-                  <FaceOutlinedIcon className='username__icon' />
+                  <FaceOutlinedIcon
+                    className='username__icon'
+                  />
                 ) : (
                   showPassword ? (
                     <VisibilityOff
