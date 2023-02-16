@@ -72,6 +72,7 @@ const Login = () => {
                 {name === 'username' ? (
                   <FaceOutlinedIcon
                     className='username__icon'
+                    style={{ color: darkMode ? '#8884d8' : '#008080' }}
                   />
                 ) : (
                   showPassword ? (
