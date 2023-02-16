@@ -20,8 +20,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-
-  const [data, setData] = useState(initialState);
   const { darkMode } = useSelector((state) => state.darkMode);
   const { currentUser, error, isSuccess, isFetching } = useSelector((state) => state.user);
 
