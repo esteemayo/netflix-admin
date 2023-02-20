@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons';
+import { NumericFormat } from 'react-number-format';
 
 const FeaturedItem = ({ type }) => {
   let data;
