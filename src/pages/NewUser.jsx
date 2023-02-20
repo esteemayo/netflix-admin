@@ -29,6 +29,7 @@ const NewUser = () => {
   const [per, setPer] = useState(null);
   const [file, setFile] = useState(null);
   const [inputs, setInputs] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = ({ target: input }) => {
     const { name, value } = input;
