@@ -345,7 +345,11 @@ export const productRows = [
 ];
 
 export const movieColumns = [
-  { field: '_id', headerName: 'ID', width: 250 },
+  {
+    field: '_id',
+    headerName: 'ID',
+    width: 250,
+  },
   {
     field: 'movie',
     headerName: 'Movie',
