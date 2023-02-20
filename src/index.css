@@ -123,6 +123,7 @@ input[type='file'] {
   stroke: #606060;
 }
 
+.new__user-icon,
 .username__icon {
   cursor: text;
 }
