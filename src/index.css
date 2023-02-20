@@ -140,3 +140,10 @@ input[type='file'] {
   top: 1rem;
   right: 2rem;
 }
+
+.user__icon {
+  font-size: 2rem !important;
+  position: absolute;
+  top: 1.15rem;
+  right: 2rem;
+}
