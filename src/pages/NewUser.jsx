@@ -198,6 +198,7 @@ const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 2rem;
+  position: relative;
 
   &:not(:last-of-type) {
     margin-bottom: 1rem;
