@@ -137,7 +137,7 @@ const NewUser = () => {
                     />
                   )
                 )}
-                {name === 'passwordConfirm' && (
+                {name === 'confirmPassword' && (
                   showPassword ? (
                     <VisibilityOff
                       onClick={() => setShowPassword(!showPassword)}
