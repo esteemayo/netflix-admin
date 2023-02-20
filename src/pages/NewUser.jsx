@@ -139,6 +139,21 @@ const NewUser = () => {
                     />
                   )
                 )}
+                {name === 'passwordConfirm' && (
+                  showPassword ? (
+                    <VisibilityOff
+                      onClick={() => setShowPassword(!showPassword)}
+                      className='user__icon new__userPassword-icon'
+                      style={{ color: darkMode ? '#999999' : '#00008b' }}
+                    />
+                  ) : (
+                    <Visibility
+                      onClick={() => setShowPassword(!showPassword)}
+                      className='user__icon new__userPassword-icon'
+                      style={{ color: darkMode ? '#999999' : '#00008b' }}
+                    />
+                  )
+                )}
               </FormGroup>
             );
           })}
