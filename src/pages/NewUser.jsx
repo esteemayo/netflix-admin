@@ -104,6 +104,7 @@ const NewUser = () => {
             return (
               <FormGroup key={id}>
                 <FormInput
+                  id={id}
                   type={type}
                   name={name}
                   placeholder={placeholder}
@@ -111,7 +112,7 @@ const NewUser = () => {
                   autoFocus={name === 'username' ? true : false}
                   onChange={handleChange}
                 />
-                <FormLabel>{label}</FormLabel>
+                <FormLabel htmlFor={id}>{label}</FormLabel>
               </FormGroup>
             );
           })}
