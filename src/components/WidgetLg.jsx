@@ -27,7 +27,7 @@ const WidgetLg = () => {
                   <UserName>{customer}</UserName>
                 </TableDataUser>
                 <TableDataDate>{createdAt}</TableDataDate>
-                <TableDataAmount>${total}</TableDataAmount>
+                <TableDataAmount></TableDataAmount>
                 <TableDataStatus>
                   <Button type={status}>{status}</Button>
                 </TableDataStatus>
