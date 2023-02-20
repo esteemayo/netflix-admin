@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { transactions } from 'data';
 import { NumericFormat } from 'react-number-format';
 
 const WidgetLg = () => {
