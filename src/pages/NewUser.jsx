@@ -24,6 +24,7 @@ import { userInputs } from 'formData';
 const NewUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { darkMode } = useSelector((state) => state.darkMode);
   const { error, isFetching } = useSelector((state) => state.user);
 
   const [per, setPer] = useState(null);
