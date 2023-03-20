@@ -12,7 +12,6 @@ import {
 } from 'redux-persist';
 
 import userReducer from 'redux/user/userSlice';
-import listReducer from 'redux/list/listSlice';
 import movieReducer from 'redux/movie/movieSlice';
 import listReducer from 'redux/list/listSlice';
 import darkModeReducer from 'redux/darkMode/darkModeSlice';
