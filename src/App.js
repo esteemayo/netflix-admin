@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AuthRoute from 'utils/AuthRoute';
 import ProtectedRoute from 'utils/ProtectedRoute';
 import { darkTheme, lightTheme } from 'utils/Theme';
+import ProtectedRoute from 'utils/ProtectedRoute';
 import { listColumns, movieColumns, userColumns } from 'data';
 import {
   Home,
